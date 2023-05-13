@@ -1,0 +1,51 @@
+{
+  "name": "leadpersona",
+  "version": "1.0.0",
+  "description": "leadpersona",
+  "main": "index.js",
+  "scripts": {
+    "watch": "webpack --config webpack/webpack.dev.js --watch",
+    "build": "webpack --config webpack/webpack.prod.js",
+    "clean": "rimraf dist",
+    "test": "npx jest",
+    "style": "prettier --single-quote --trailing-comma none --semi false --tab-width 2 --write \"src/**/*.{ts,tsx}\""
+  },
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rmill2016/leadpersona.git"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@stripe/react-stripe-js": "^2.1.0",
+    "@stripe/stripe-js": "^1.52.1",
+    "@supabase/auth-ui-react": "^0.4.2",
+    "@supabase/auth-ui-shared": "^0.1.6",
+    "@supabase/supabase-js": "^2.21.0",
+    "@tailwindcss/forms": "^0.5.3",
+    "@tailwindcss/typography": "^0.5.9",
+    "@types/chrome": "^0.0.235",
+    "@types/jest": "^27.0.2",
+    "@types/react": "^18.0.29",
+    "@types/react-dom": "^18.0.11",
+    "cntl": "^1.0.0",
+    "copy-webpack-plugin": "^9.0.1",
+    "glob": "^7.1.6",
+    "jest": "^27.2.1",
+    "prettier": "^2.8.8",
+    "prettier-plugin-tailwindcss": "^0.2.8",
+    "rimraf": "^3.0.2 ",
+    "stripe": "^12.5.0",
+    "tailwindcss": "^3.3.2",
+    "ts-jest": "^27.0.5",
+    "ts-loader": "^8.0.0",
+    "typescript": "^5.0.4",
+    "webpack": "^5.76.0",
+    "webpack-cli": "^4.0.0",
+    "webpack-merge": "^5.0.0"
+  }
+}
