@@ -1,35 +1,23 @@
 {
+  "short_name": "LeadPersona",
+  "name": "LeadPersona | Your AI Leader For Business Outreach",
+  "version": "1.0.0",
   "manifest_version": 3,
-
-  "name": "Chrome Extension TypeScript Starter",
-  "description": "Chrome Extension, TypeScript, Visual Studio Code",
-  "version": "1.0",
-
-  "options_ui": {
-    "page": "options.html"
-  },
-
-  "action": {
-    "default_icon": "icon.png",
-    "default_popup": "popup.html"
-  },
-
-  "content_scripts": [
-      {
-          "matches": ["<all_urls>"],
-          "js": ["js/vendor.js", "js/content_script.js"]
-      }
-  ],
-
   "background": {
-    "service_worker": "js/background.js"
+    "service_worker": "background.js"
   },
-
-  "permissions": [
-    "storage"
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "css": ["dist/index.cb601c27.css"],
+      "js": ["dist/index.29496aea.js", "dist/index.a09bb8b2.js"]
+    }
   ],
-
-  "host_permissions": [
-    "<all_urls>"
-  ]
+  "permissions": ["storage", "scripting", "tabs", "activeTab"],
+  "icons": {
+    "16": "img/icon-16.png",
+    "32": "img/icon-32.png",
+    "48": "img/icon-48.png",
+    "120": "img/Logo.png"
+  }
 }
