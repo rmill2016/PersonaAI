@@ -1,9 +1,10 @@
 import 'react-app-polyfill/ie11'
 
-import React, { HtmlHTMLAttributes } from 'react'
+import React, { useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import Panel from './Panel'
 import { APP_COLLAPSE_WIDTH, APP_EXTEND_WIDTH } from './const'
+import { Screen } from './types/types'
 
 async function loadChromeStorage() {
   let initialEnabled = true
@@ -20,8 +21,16 @@ async function loadChromeStorage() {
   return initialEnabled
 }
 
+async function handleScreen() {
+  chrome.runtime.onMessage.addListener((message) => {
+    return message
+  })
+}
+
+// logic for creating embedded extension as a side-panel
 async function init() {
   const initialEnabled = await loadChromeStorage()
+  const screen = await handleScreen()
 
   // Create html tag wrapper
   const htmlWrapper: HTMLHtmlElement = document.querySelectorAll('html')[0]
@@ -62,7 +71,7 @@ async function init() {
     htmlWrapper.style.marginRight = `${value}px`
   }
 
-  root.render(<Panel onWidthChange={onSidePanelWidthChange} initialEnabled={initialEnabled} />)
+  root.render(<Panel onWidthChange={onSidePanelWidthChange} initialEnabled={initialEnabled} screen={screen} />)
 }
 
 init()

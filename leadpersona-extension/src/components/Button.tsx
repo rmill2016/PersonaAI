@@ -1,13 +1,6 @@
 import classNames from 'classnames'
 import React, { ReactElement, ReactNode } from 'react'
-
-type ButtonProps = {
-  children?: ReactNode
-  active?: boolean
-  onClick?: () => void
-  label?: string
-  className?: string
-}
+import { ButtonProps } from '../types/types'
 
 export default function Button({ children, active, onClick, label, className }: ButtonProps): ReactElement {
   return (

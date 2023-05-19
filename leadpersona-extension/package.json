@@ -10,7 +10,7 @@
     "start": "parcel --dist-dir ./public/dist",
     "prebuild": "yarn style && del \"./public/dist\"",
     "build": "parcel build src/index.html --no-content-hash --dist-dir ./public/dist --no-source-maps",
-    "style": "npx tailwindcss -i ./src/input.css -o ./src/tailwindcss-output.css",
+    "style": "npx tailwindcss -i ./src/input.css -o ./src/tailwindcss-output.css -m",
     "style:watch": "yarn style -- --watch",
     "lint": "prettier --no-semi --tab-width 2 --trailing-comma es5 --single-quote true -w ."
   },

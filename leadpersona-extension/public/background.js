@@ -1,3 +1,4 @@
+// background.js
 chrome.runtime.onInstalled.addListener(() => {
-  console.log('Extension Installed!')
+  chrome.runtime.sendMessage({ message: 'Login' }, (response) => {})
 })

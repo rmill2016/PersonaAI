@@ -19,5 +19,11 @@
     "32": "img/icon-32.png",
     "48": "img/icon-48.png",
     "120": "img/Logo.png"
-  }
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["img/*"],
+      "matches": ["<all_urls>"]
+    }
+  ]
 }
