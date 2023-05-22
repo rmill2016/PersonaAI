@@ -1,6 +1,4 @@
-export type Screen = {
-  screen: 'Login' | 'Questionaire' | 'Main'
-}
+export type Screen = 'LOGIN' | 'QUESTIONAIRE' | 'MAIN'
 
 export type ButtonProps = {
   children?: ReactNode

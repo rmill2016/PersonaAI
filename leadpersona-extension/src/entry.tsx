@@ -3,8 +3,7 @@ import 'react-app-polyfill/ie11'
 import React, { useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import Panel from './Panel'
-import { APP_COLLAPSE_WIDTH, APP_EXTEND_WIDTH } from './const'
-import { Screen } from './types/types'
+import { APP_COLLAPSE_WIDTH, APP_EXTEND_WIDTH, APP_HIDE } from './const'
 
 async function loadChromeStorage() {
   let initialEnabled = true
@@ -21,22 +20,15 @@ async function loadChromeStorage() {
   return initialEnabled
 }
 
-async function handleScreen() {
-  chrome.runtime.onMessage.addListener((message) => {
-    return message
-  })
-}
-
 // logic for creating embedded extension as a side-panel
 async function init() {
   const initialEnabled = await loadChromeStorage()
-  const screen = await handleScreen()
 
   // Create html tag wrapper
   const htmlWrapper: HTMLHtmlElement = document.querySelectorAll('html')[0]
   htmlWrapper.id = 'original-html-wrapper'
-  htmlWrapper.style.marginRight = `${initialEnabled ? APP_EXTEND_WIDTH : APP_COLLAPSE_WIDTH}px`
   htmlWrapper.className = 'duration-300 ease-in-out'
+  htmlWrapper.style.marginRight = `${APP_COLLAPSE_WIDTH}px`
 
   // Create div wrapper
   const body = document.body
@@ -60,7 +52,7 @@ async function init() {
   // create react app
   const app = document.createElement('div')
   app.id = 'side-bar-extension-root'
-  app.className = 'z-max fixed top-0 bottom-0 right-0 flex flex-1 p-0 m-0 overflow-hidden duration-300 ease-in-out'
+  app.className = 'z-max top-0 bottom-0 right-0 flex flex-1 p-0 m-0 overflow-hidden duration-300 ease-in-out'
   app.style.maxWidth = `${initialEnabled ? APP_EXTEND_WIDTH : APP_COLLAPSE_WIDTH}px`
 
   body.appendChild(app)
@@ -71,7 +63,7 @@ async function init() {
     htmlWrapper.style.marginRight = `${value}px`
   }
 
-  root.render(<Panel onWidthChange={onSidePanelWidthChange} initialEnabled={initialEnabled} screen={screen} />)
+  root.render(<Panel onWidthChange={onSidePanelWidthChange} initialEnabled={initialEnabled} />)
 }
 
 init()

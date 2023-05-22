@@ -22,4 +22,3 @@ yarn-error.log*
 .history/
 
 .parcel-cache
-/src/tailwindcss-output.css

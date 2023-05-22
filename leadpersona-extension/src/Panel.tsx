@@ -3,21 +3,23 @@ import { APP_COLLAPSE_WIDTH, APP_EXTEND_WIDTH } from './const'
 import { Screen } from './types/types'
 import classNames from 'classnames'
 import Button from './components/Button'
+import Header from './components/Header'
+import Footer from './components/Footer'
+import Login from './screens/Login'
+import Questionaire from './screens/Questionaire'
+import Main from './screens/Main'
 
 export default function Panel({
   onWidthChange,
   initialEnabled,
-  screen,
 }: {
   onWidthChange: (value: number) => void
   initialEnabled: boolean
-  screen: any
 }): ReactElement {
   const [enabled, setEnabled] = useState(initialEnabled)
   const [sidePanelWidth, setSidePanelWidth] = useState(enabled ? APP_EXTEND_WIDTH : APP_COLLAPSE_WIDTH)
-  const [tabIndex, setTabIndex] = useState(0)
-
-  console.log(screen)
+  const [screen, setScreen] = useState<Screen>('LOGIN')
+  const Logo = require('../public/img/icon-48.png')
 
   function handleOnToggle(enabled: boolean) {
     const value = enabled ? APP_EXTEND_WIDTH : APP_COLLAPSE_WIDTH
@@ -33,28 +35,30 @@ export default function Panel({
     handleOnToggle(newValue)
   }
 
+  useEffect(() => {
+    let messageOverlay: HTMLElement | null = null
+    window.addEventListener('load', () => {
+      let messageOverlay: HTMLElement | null = document.querySelector('div.application-outlet aside#msg-overlay')
+      if (messageOverlay) {
+        messageOverlay.style.right = '90px'
+        messageOverlay.style.transition = 'all 0.3 ease'
+      } else null
+    })
+  }, [])
+
   return (
     <div
       style={{
         width: sidePanelWidth - 5,
       }}
-      className="absolute top-0 right-0 bottom-0 w-auto h-full z-max bg-gradient-to-b from-green-from to-green-to ease-in-out duration-300 overflow-hidden"
+      className="z-max bg-gradient-to-b from-green-from to-green-to absolute top-0 bottom-0 right-0 w-auto h-full overflow-hidden duration-300 ease-in-out"
     >
-      {/* Embedded Iframe for websites */}
-      {/* <iframe
-        className={classNames('absolute w-full h-full border-none ease-linear overflow-hidden', {
-          'opacity-0': !enabled,
-          '-z-10': !enabled,
-        })}
-        title={URLS[tabIndex].name}
-        src={URLS[tabIndex].url}
-      /> */}
-      <div className="absolute h-auto flex border-none flex-col ease-linear w-[60px] space-y-3 p-1">
-        <Button onClick={() => openPanel(!enabled)}>
-          <img src="icon-48.9734697e.png" alt="logo" className="w-10 h-10" />
+      <div className="absolute z-10 flex justify-center items-center ease-linear w-[60px] h-auto aspect-square p-1">
+        <Button onClick={() => openPanel()}>
+          <img src={Logo} alt="logo" style={{ width: '2.5rem', height: '2.5rem' }} />
         </Button>
       </div>
-      <div className="absolute bottom-0 left-0 right-0 w-[60px] z-10 flex justify-center items-center p-1">
+      <div className="absolute bottom-0 left-0 right-0 w-[60px] h-auto aspect-square z-10 flex justify-center items-center p-1">
         <Button active={enabled} onClick={() => openPanel()}>
           <span>
             <svg
@@ -63,7 +67,8 @@ export default function Panel({
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className="w-10 h-10 text-white"
+              style={{ width: '2.5rem', height: '2.5rem' }}
+              className="text-white"
             >
               <path
                 strokeLinecap="round"
@@ -81,15 +86,17 @@ export default function Panel({
       <div
         id="screen"
         className={classNames(
-          'absolute w-full h-full grid grid-rows-[60px_1fr_60px] grid-cols-1 place-items-center border border-red-500 transition-opacity duration-200 delay-500',
+          'absolute w-full h-full grid grid-rows-[60px_1fr_60px] grid-cols-1 place-items-center transition-opacity overflow-y-hidden duration-200 delay-500',
           {
-            'opacity-0 -z-10 pointer-events-none delay-0': !enabled,
+            'opacity-0 -z-10 pointer-events-none !delay-0 !duration-0': !enabled,
           }
         )}
       >
-        <h1 className="text-white">This is test content</h1>
-        <h1 className="text-white">This is test content</h1>
-        <h1 className="text-white">This is test content</h1>
+        <Header />
+        {screen === 'LOGIN' && <Login />}
+        {screen === 'QUESTIONAIRE' && <Questionaire />}
+        {screen === 'MAIN' && <Main />}
+        <Footer />
       </div>
     </div>
   )

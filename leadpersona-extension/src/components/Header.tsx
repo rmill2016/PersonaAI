@@ -1,7 +1,7 @@
 import React from 'react'
 import { Screen } from '../types/types'
 
-const Header = (screen: Screen) => {
+const Header = () => {
   return <div>Header</div>
 }
 

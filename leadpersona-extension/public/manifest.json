@@ -3,27 +3,36 @@
   "name": "LeadPersona | Your AI Leader For Business Outreach",
   "version": "1.0.0",
   "manifest_version": 3,
+  "icons": {
+    "16": "./img/icon-16.png",
+    "32": "./img/icon-32.png",
+    "48": "./img/icon-48.png",
+    "120": "./img/Logo.png"
+  },
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_icon": {
+      "16": "img/icon-16.png",
+      "32": "img/icon-32.png",
+      "48": "img/icon-48.png",
+      "128": "img/Logo.png"
+    }
   },
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
+      "matches": ["http://localhost/*", "*://*.linkedin.com/*"],
       "css": ["dist/index.cb601c27.css"],
-      "js": ["dist/index.29496aea.js", "dist/index.a09bb8b2.js"]
+      "js": ["dist/index.53374680.js", "dist/index.46bce086.js"]
     }
   ],
-  "permissions": ["storage", "scripting", "tabs", "activeTab"],
-  "icons": {
-    "16": "img/icon-16.png",
-    "32": "img/icon-32.png",
-    "48": "img/icon-48.png",
-    "120": "img/Logo.png"
-  },
   "web_accessible_resources": [
     {
-      "resources": ["img/*"],
-      "matches": ["<all_urls>"]
+      "resources": ["dist/*"],
+      "matches": ["http://localhost/*", "*://*.linkedin.com/*"]
     }
-  ]
+  ],
+  "permissions": ["tabs", "activeTab", "scripting", "storage"]
 }
