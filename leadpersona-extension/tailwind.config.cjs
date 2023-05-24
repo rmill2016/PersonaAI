@@ -1,7 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./src/**/*.{html,js,jsx,ts,tsx}'],
+  important: '#extension-root',
+  content: ['./content-script/**/*.{js,ts,jsx,tsx}'],
   theme: {
+    container: {
+      padding: '2rem',
+    },
     extend: {
       zIndex: {
         max: 900000,
@@ -19,5 +23,9 @@ module.exports = {
       },
     },
   },
-  plugins: [require('@tailwindcss/forms')],
+  plugins: [
+    require('@tailwindcss/forms')({
+      strategy: 'class',
+    }),
+  ],
 }

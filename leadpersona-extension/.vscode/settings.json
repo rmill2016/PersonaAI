@@ -1,4 +1,3 @@
 {
-  "prettier.configPath": "./.prettierrc",
-  "explorer.confirmDelete": false
+  "prettier.configPath": "./.prettierrc"
 }

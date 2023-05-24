@@ -1,43 +1,38 @@
-# React Chrome Extension Template: Side Panel
+# Cross Platform Browser Extension template repository
 
-A simple [React](https://reactjs.org/) implementation of a Chrome Extension Template for a foldable side panel. Using [Parcel](https://parceljs.org/), [TailwindCSS](https://tailwindcss.com/) and [TypeScript](https://www.typescriptlang.org/) for development. Optimized to fit most of the modern webpage and save setting to chrome storage.
+React + TailwindCSS bundled with Vite.
 
----
+# Installation
 
-## Development
-
-```bash
-# clone the repo
-git clone https://github.com/rmill2016/PersonaAI/tree/master/leadpersona-extension && cd leadpersona-extension
-
-# install needed package
-yarn
-# add logo under /public/manifest.json
-# for local test
-yarn start
-# then open localhost:1234
-
-# build the extension
-yarn build
-
-# lint extension
-yarn lint
-
-# build tailwindCSS files
-yarn style:watch
+```
+npm i
 ```
 
----
+# Building the Extension:
 
-## Installation
+## Firefox
 
-- After build process, open Chrome or any chromium based browser
-- Go to manage extension page
-- Toggle `Developer mode`
-- Choose Load unpacked option for `/publish` folder or unzip latest [release](https://github.com/rmill2016/PersonaAI/releases) file.
+`npm run build` builds the extension by default for Firefox.
 
----
+The generated files are in `dist/`.
 
-## Credits
+To load the extension in Firefox go to `about:debugging#/runtime/this-firefox` or
 
-Credit to Vincecao for the amazing chrome extension template!
+Firefox > Preferences > Extensions & Themes > Debug Add-ons > Load Temporary Add-on...
+
+Here locate the `dist/` directory and open `manifest.json`
+
+## Chrome
+
+`npm run build:chrome` builds the extensions for Google Chrome.
+
+The generated files are in `dist/`.
+To load the extensions in Google Chrome go to `chrome://extensions/` and click `Load unpacked`. Locate the dist directory and select `manifest.json`.
+
+# Files:
+
+- content-script - UI files
+- background.ts - Background script/Service worker
+- index.html - popup UI
+
+If you have any questions feel free to open an issue.

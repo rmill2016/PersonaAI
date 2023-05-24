@@ -1,38 +1,32 @@
 {
-  "short_name": "LeadPersona",
-  "name": "LeadPersona | Your AI Leader For Business Outreach",
+  "name": "leadpersona",
+  "description": "LeadPersona | Your AI Leader For Business Outreach",
   "version": "1.0.0",
   "manifest_version": 3,
-  "icons": {
-    "16": "./img/icon-16.png",
-    "32": "./img/icon-32.png",
-    "48": "./img/icon-48.png",
-    "120": "./img/Logo.png"
-  },
-  "background": {
-    "service_worker": "background.js",
-    "type": "module"
-  },
   "action": {
-    "default_icon": {
-      "16": "img/icon-16.png",
-      "32": "img/icon-32.png",
-      "48": "img/icon-48.png",
-      "128": "img/Logo.png"
-    }
+    "default_popup": "index.html",
+    "default_title": "Open the popup"
   },
   "content_scripts": [
     {
-      "matches": ["http://localhost/*", "*://*.linkedin.com/*"],
-      "css": ["dist/index.cb601c27.css"],
-      "js": ["dist/index.53374680.js", "dist/index.46bce086.js"]
+      "matches": [
+        "http://localhost/*",
+        "*://linkedin.com/*",
+        "*://leadpersona.io/*"
+      ],
+      "run_at": "document_end",
+      "js": ["./index.global.js"],
+      "css": ["./style.css"]
     }
   ],
-  "web_accessible_resources": [
-    {
-      "resources": ["dist/*"],
-      "matches": ["http://localhost/*", "*://*.linkedin.com/*"]
-    }
-  ],
-  "permissions": ["tabs", "activeTab", "scripting", "storage"]
+  "permissions": ["storage", "tabs", "activeTab"],
+  "background": {
+    "service_worker": "./background.global.js"
+  },
+  "icons": {
+    "16": "icon-16.png",
+    "32": "icon-32.png",
+    "48": "icon-48.png",
+    "120": "Logo.png"
+  }
 }

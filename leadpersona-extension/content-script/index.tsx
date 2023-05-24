@@ -1,9 +1,8 @@
-import 'react-app-polyfill/ie11'
-
-import React, { useState } from 'react'
-import { createRoot } from 'react-dom/client'
-import Panel from './Panel'
-import { APP_COLLAPSE_WIDTH, APP_EXTEND_WIDTH, APP_HIDE } from './const'
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App'
+import { APP_COLLAPSE_WIDTH, APP_EXTEND_WIDTH } from '../src/const'
+import './index.css'
 
 async function loadChromeStorage() {
   let initialEnabled = true
@@ -34,7 +33,8 @@ async function init() {
   const body = document.body
   const bodyWrapper = document.createElement('div')
   bodyWrapper.id = 'original-body-wrapper'
-  bodyWrapper.className = 'relative w-full h-full overflow-auto duration-300 ease-in-out'
+  bodyWrapper.className =
+    'relative w-full h-full overflow-auto duration-300 ease-in-out'
 
   // Move the body's children into this wrapper
   while (body.firstChild) {
@@ -52,18 +52,56 @@ async function init() {
   // create react app
   const app = document.createElement('div')
   app.id = 'side-bar-extension-root'
-  app.className = 'z-max top-0 bottom-0 right-0 flex flex-1 p-0 m-0 overflow-hidden duration-300 ease-in-out'
-  app.style.maxWidth = `${initialEnabled ? APP_EXTEND_WIDTH : APP_COLLAPSE_WIDTH}px`
+  app.className =
+    'z-max top-0 bottom-0 right-0 flex flex-1 p-0 m-0 overflow-hidden duration-300 ease-in-out'
+  app.style.maxWidth = `${
+    initialEnabled ? APP_EXTEND_WIDTH : APP_COLLAPSE_WIDTH
+  }px`
 
-  body.appendChild(app)
-  const root = createRoot(app!)
+  if (body) {
+    body.append(app)
+  }
 
   function onSidePanelWidthChange(value: number) {
     app.style.maxWidth = `${value}px`
     htmlWrapper.style.marginRight = `${value}px`
   }
 
-  root.render(<Panel onWidthChange={onSidePanelWidthChange} initialEnabled={initialEnabled} />)
+  ReactDOM.createRoot(app).render(
+    <React.StrictMode>
+      <App
+        initialEnabled={initialEnabled}
+        onWidthChange={onSidePanelWidthChange}
+      />
+    </React.StrictMode>
+  )
 }
 
 init()
+
+/* const pluginTagId = 'extension-root'
+const existingInstance = document.getElementById('extension-root')
+if (existingInstance) {
+  console.log('existing instance found, removing')
+  existingInstance.remove()
+}
+
+const index = document.createElement('div')
+index.id = pluginTagId
+
+// Make sure the element that you want to mount the app to has loaded. You can
+// also use `append` or insert the app using another method:
+// https://developer.mozilla.org/en-US/docs/Web/API/Element#methods
+//
+// Also control when the content script is injected from the manifest.json:
+// https://developer.chrome.com/docs/extensions/mv3/content_scripts/#run_time
+const body = document.querySelector('body')
+if (body) {
+  body.append(index)
+}
+
+ReactDOM.createRoot(index).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+) */
