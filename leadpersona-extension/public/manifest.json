@@ -3,28 +3,20 @@
   "description": "LeadPersona | Your AI Leader For Business Outreach",
   "version": "1.0.0",
   "manifest_version": 3,
-  "action": {
-    "default_popup": "index.html",
-    "default_title": "Open the popup"
-  },
   "content_scripts": [
     {
-      "matches": [
-        "http://localhost/*",
-        "*://linkedin.com/*",
-        "*://leadpersona.io/*"
-      ],
+      "matches": ["*://*.linkedin.com/*"],
       "run_at": "document_end",
       "js": ["./index.global.js"],
       "css": ["./style.css"]
     }
   ],
-  "permissions": ["storage", "tabs", "activeTab"],
+  "permissions": ["storage", "tabs", "activeTab", "scripting"],
   "background": {
     "service_worker": "./background.global.js"
   },
   "icons": {
-    "16": "icon-16.png",
+    "16": "icon-48.png",
     "32": "icon-32.png",
     "48": "icon-48.png",
     "120": "Logo.png"

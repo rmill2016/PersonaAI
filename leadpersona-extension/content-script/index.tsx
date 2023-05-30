@@ -1,5 +1,7 @@
+import 'react-app-polyfill/ie11'
+
 import React from 'react'
-import ReactDOM from 'react-dom/client'
+import ReactDom from 'react-dom/client'
 import App from './App'
 import { APP_COLLAPSE_WIDTH, APP_EXTEND_WIDTH } from '../src/const'
 import './index.css'
@@ -30,7 +32,7 @@ async function init() {
   htmlWrapper.style.marginRight = `${APP_COLLAPSE_WIDTH}px`
 
   // Create div wrapper
-  const body = document.body
+  const body = document.querySelector('body')!
   const bodyWrapper = document.createElement('div')
   bodyWrapper.id = 'original-body-wrapper'
   bodyWrapper.className =
@@ -67,7 +69,7 @@ async function init() {
     htmlWrapper.style.marginRight = `${value}px`
   }
 
-  ReactDOM.createRoot(app).render(
+  ReactDom.createRoot(app).render(
     <React.StrictMode>
       <App
         initialEnabled={initialEnabled}
@@ -78,30 +80,3 @@ async function init() {
 }
 
 init()
-
-/* const pluginTagId = 'extension-root'
-const existingInstance = document.getElementById('extension-root')
-if (existingInstance) {
-  console.log('existing instance found, removing')
-  existingInstance.remove()
-}
-
-const index = document.createElement('div')
-index.id = pluginTagId
-
-// Make sure the element that you want to mount the app to has loaded. You can
-// also use `append` or insert the app using another method:
-// https://developer.mozilla.org/en-US/docs/Web/API/Element#methods
-//
-// Also control when the content script is injected from the manifest.json:
-// https://developer.chrome.com/docs/extensions/mv3/content_scripts/#run_time
-const body = document.querySelector('body')
-if (body) {
-  body.append(index)
-}
-
-ReactDOM.createRoot(index).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-) */

@@ -3,10 +3,14 @@
 @tailwind utilities;
 
 @layer base {
-  h1 {
-    @apply text-slate-700 text-xl;
+  html,
+  body {
+    @apply font-inter;
   }
-  .loading-button {
-    display: inline;
+}
+
+@layer utilities {
+  .hover-underline {
+    @apply relative after:absolute after:-bottom-1 after:left-0 after:w-0 hover:after:w-full after:h-px after:bg-green-accent hover:after:duration-200 hover:after:origin-left hover:after:ease-in-out;
   }
 }

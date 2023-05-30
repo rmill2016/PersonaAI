@@ -1,73 +1,38 @@
 import React from 'react'
-import browser from 'webextension-polyfill'
 import supabase from './src/supabase_client'
-
-type Message =
-  | {
-      action: 'getSession' | 'signOut' | 'signInAuth'
-      value: null
-    }
-  | {
-      action: 'signIn' | 'signUp'
-      value: {
-        email: string
-        password: string
-      }
-    }
-
-type ResponseCallback = (data: any) => void
+import { Data, DataError, Message, ResponseCallback } from './src/types/types'
 
 async function handleMessage(
   { action, value }: Message,
   response: ResponseCallback
 ) {
-  switch (action) {
-    case 'signIn':
+  if (action === 'signUp') {
+    const result = await supabase.auth.signUp(value)
+    response({ message: 'Successfully signed up!', data: result })
+  } else if (action === 'signIn') {
+    try {
       console.log('requesting auth')
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email: value.email,
-        password: value.password,
-      })
-      response({ data, error })
-      break
-    case 'signUp':
-      const { data, error } = await supabase.auth.signUp({
-        email: value.email,
-        password: value.password,
-      })
-      response({
-        message: 'Successfully signed up!',
-        data: { data, error },
-      })
-      break
-    case 'signInAuth':
-      const { data, error } = await supabase.auth.signInWithOAuth({
-        provider: 'google',
-      })
-      response({
-        message: "Successfully OAuth'd!",
-        data: { data, error },
-      })
-      break
+      const { data, error }: { data: Data; error: DataError } =
+        await supabase.auth.signInWithPassword(value)
+      return response({ data, error })
+    } catch (error) {
+      return { error }
+    }
+  } else if (action === 'getSession') {
+    await supabase.auth.getSession().then(response)
+  } else if (action === 'signOut') {
+    const { error } = await supabase.auth.signOut()
 
-    case 'signOut':
-      const { error } = await supabase.auth.signOut()
-      response({ data: null, error })
-      break
+    // clear local session
+    chrome.storage.local.remove('session')
 
-    case 'getSession':
-      supabase.auth.getSession().then(response)
-      break
-
-    default:
-      response({ data: null, error: 'Unknown action' })
+    response({ data: null, error })
+  } else {
+    response({ data: null, error: 'Unknown action' })
   }
 }
 
-// @ts-ignore
-browser.runtime.onMessage.addListener((msg, sender, response) => {
+chrome.runtime.onMessage.addListener((msg, sender, response) => {
   handleMessage(msg, response)
   return true
 })
-
-export {}

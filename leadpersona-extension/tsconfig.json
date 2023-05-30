@@ -2,8 +2,8 @@
   "compilerOptions": {
     "target": "ESNext",
     "useDefineForClassFields": true,
-    "lib": ["ESNext", "DOM"],
-    "allowJs": false,
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
@@ -15,8 +15,10 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "typeRoots": ["src/types"]
+    "typeRoots": ["src/types"],
+    "types": ["chrome"]
   },
-  "include": ["src"],
+
+  "include": ["src", "types"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

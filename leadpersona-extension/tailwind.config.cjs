@@ -1,7 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  important: '#extension-root',
-  content: ['./content-script/**/*.{js,ts,jsx,tsx}'],
+  important: '#side-bar-extension-root',
+  content: [
+    './content-script/**/*.{js,jsx,ts,tsx}',
+    './src/components/**/*.{js,jsx,ts,tsx}',
+  ],
   theme: {
     container: {
       padding: '2rem',
@@ -27,5 +30,7 @@ module.exports = {
     require('@tailwindcss/forms')({
       strategy: 'class',
     }),
+    require('tailwindcss-font-inter'),
+    require('autoprefixer'),
   ],
 }
