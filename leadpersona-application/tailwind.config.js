@@ -1,4 +1,4 @@
-const { fontFamily } = require('tailwindcss/defaultTheme');
+const { fontFamily } = require('tailwindcss/defaultTheme')
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -9,11 +9,30 @@ module.exports = {
     'pages/**/*.{ts,tsx}'
   ],
   theme: {
+    container: {
+      center: true,
+      padding: {
+        DEFAULT: '20px',
+        md: '40px',
+        xl: '80px'
+      }
+    },
+    screens: {
+      sm: '576px',
+      md: '768px',
+      lg: '1200px',
+      xl: '1440px',
+      '2xl': '1920px'
+    },
     extend: {
-      fontFamily: {
-        sans: ['var(--font-sans)', ...fontFamily.sans]
+      colors: {
+        base: '#071E2C',
+        primary: '#28616F',
+        secondary: '#0D3C4C',
+        accent: '#35BE9C',
+        gray: '#ABAEAC'
       }
     }
   },
-  plugins: []
-};
+  plugins: [require('@tailwindcss/forms'), require('tailwindcss-font-inter')]
+}

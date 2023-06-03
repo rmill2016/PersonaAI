@@ -5,6 +5,6 @@ const nextConfig = {
     appDir: true,
     serverActions: true
   }
-};
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig

@@ -1,29 +1,30 @@
-import ManageSubscriptionButton from './ManageSubscriptionButton';
+import ManageSubscriptionButton from './ManageSubscriptionButton'
 import {
   getSession,
   getUserDetails,
   getSubscription
-} from '@/app/supabase-server';
-import Button from '@/components/ui/Button';
-import { Database } from '@/types_db';
-import { createServerActionClient } from '@supabase/auth-helpers-nextjs';
-import { revalidatePath } from 'next/cache';
-import { cookies } from 'next/headers';
-import Link from 'next/link';
-import { redirect } from 'next/navigation';
-import { ReactNode } from 'react';
+} from '@/app/supabase-server'
+import Button from '@/components/ui/Button'
+import { Database } from '@/types_db'
+import { createServerActionClient } from '@supabase/auth-helpers-nextjs'
+import { revalidatePath } from 'next/cache'
+import { cookies } from 'next/headers'
+import Link from 'next/link'
+import { redirect } from 'next/navigation'
+import { ReactNode } from 'react'
+import SignOut from '@/components/ui/Navbar/SignOutButton'
 
 export default async function Account() {
   const [session, userDetails, subscription] = await Promise.all([
     getSession(),
     getUserDetails(),
     getSubscription()
-  ]);
+  ])
 
-  const user = session?.user;
+  const user = session?.user
 
   if (!session) {
-    return redirect('/signin');
+    return redirect('/signin')
   }
 
   const subscriptionPrice =
@@ -32,36 +33,36 @@ export default async function Account() {
       style: 'currency',
       currency: subscription?.prices?.currency!,
       minimumFractionDigits: 0
-    }).format((subscription?.prices?.unit_amount || 0) / 100);
+    }).format((subscription?.prices?.unit_amount || 0) / 100)
 
   const updateName = async (formData: FormData) => {
-    'use server';
+    'use server'
 
-    const newName = formData.get('name') as string;
-    const supabase = createServerActionClient<Database>({ cookies });
-    const session = await getSession();
-    const user = session?.user;
+    const newName = formData.get('name') as string
+    const supabase = createServerActionClient<Database>({ cookies })
+    const session = await getSession()
+    const user = session?.user
     const { error } = await supabase
       .from('users')
       .update({ full_name: newName })
-      .eq('id', user?.id);
+      .eq('id', user?.id)
     if (error) {
-      console.log(error);
+      console.log(error)
     }
-    revalidatePath('/account');
-  };
+    revalidatePath('/account')
+  }
 
   const updateEmail = async (formData: FormData) => {
-    'use server';
+    'use server'
 
-    const newEmail = formData.get('email') as string;
-    const supabase = createServerActionClient<Database>({ cookies });
-    const { error } = await supabase.auth.updateUser({ email: newEmail });
+    const newEmail = formData.get('email') as string
+    const supabase = createServerActionClient<Database>({ cookies })
+    const { error } = await supabase.auth.updateUser({ email: newEmail })
     if (error) {
-      console.log(error);
+      console.log(error)
     }
-    revalidatePath('/account');
-  };
+    revalidatePath('/account')
+  }
 
   return (
     <section className="mb-32 bg-black">
@@ -99,13 +100,7 @@ export default async function Account() {
           footer={
             <div className="sm:flex-row sm:items-center flex flex-col items-start justify-between">
               <p className="sm:pb-0 pb-4">64 characters maximum</p>
-              <Button
-                variant="slim"
-                type="submit"
-                form="nameForm"
-
-              >
-
+              <Button variant="slim" type="submit" form="nameForm">
                 Update Name
               </Button>
             </div>
@@ -132,13 +127,7 @@ export default async function Account() {
               <p className="sm:pb-0 pb-4">
                 We will email you to verify the change.
               </p>
-              <Button
-                variant="slim"
-                type="submit"
-                form="emailForm"
-
-              >
-
+              <Button variant="slim" type="submit" form="emailForm">
                 Update Email
               </Button>
             </div>
@@ -157,16 +146,19 @@ export default async function Account() {
             </form>
           </div>
         </Card>
+        <div className="flex items-center justify-center w-full h-20">
+          <SignOut />
+        </div>
       </div>
     </section>
-  );
+  )
 }
 
 interface Props {
-  title: string;
-  description?: string;
-  footer?: ReactNode;
-  children: ReactNode;
+  title: string
+  description?: string
+  footer?: ReactNode
+  children: ReactNode
 }
 
 function Card({ title, description, footer, children }: Props) {
@@ -181,5 +173,5 @@ function Card({ title, description, footer, children }: Props) {
         {footer}
       </div>
     </div>
-  );
+  )
 }

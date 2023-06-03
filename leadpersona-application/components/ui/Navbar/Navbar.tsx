@@ -1,50 +1,113 @@
-import Link from 'next/link';
-import { createServerSupabaseClient } from '@/app/supabase-server';
+import React, { useState, useEffect } from 'react'
+import Link from 'next/link'
+import { createServerSupabaseClient } from '@/app/supabase-server'
 
-import Logo from '@/components/icons/Logo';
-import SignOutButton from './SignOutButton';
+import Logo from '@/components/icons/Logo'
+import Button from '@/components/ui/Button'
+import Dropdown from '@/components/ui/Dropdown'
 
-import s from './Navbar.module.css';
+import s from './Navbar.module.css'
 
 export default async function Navbar() {
-  const supabase = createServerSupabaseClient();
+  const supabase = createServerSupabaseClient()
   const {
     data: { user }
-  } = await supabase.auth.getUser();
+  } = await supabase.auth.getUser()
 
   return (
     <nav className={s.root}>
-      <a href="#skip" className="sr-only focus:not-sr-only">
-        Skip to content
-      </a>
-      <div className="max-w-6xl px-6 mx-auto">
-        <div className="relative flex flex-row justify-between py-4 align-center md:py-6">
-          <div className="flex items-center flex-1">
-            <Link href="/" className={s.logo} aria-label="Logo">
-              <Logo />
-            </Link>
-            <nav className="hidden ml-6 space-x-2 lg:block">
-              <Link href="/" className={s.link}>
+      <div className={s.navbar}>
+        <div className={s.left}>
+          <Link href={'/'} className={s.logo}>
+            <Logo className="w-full h-full" />
+          </Link>
+        </div>
+        <div className={s.right}>
+          <ul>
+            <li>
+              <Link href={'/'} className={s.link}>
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link href={'#demo'} className={s.link}>
+                Product
+              </Link>
+            </li>
+            <li>
+              <Link href={'/pricing'} className={s.link}>
                 Pricing
               </Link>
-              {user && (
-                <Link href="/account" className={s.link}>
-                  Account
+            </li>
+            <li>
+              <Link href={'#faq'} className={s.link}>
+                FAQs
+              </Link>
+            </li>
+            <li>
+              <Link href={'#contact'} className={s.link}>
+                Contact Us
+              </Link>
+            </li>
+            <li>
+              {user ? (
+                <Link href={'/account'}>
+                  <Button>Account</Button>
+                </Link>
+              ) : (
+                <Link href={'/signin'}>
+                  <Button>Sign In</Button>
                 </Link>
               )}
-            </nav>
-          </div>
-          <div className="flex justify-end flex-1 space-x-8">
-            {user ? (
-              <SignOutButton />
-            ) : (
-              <Link href="/signin" className={s.link}>
-                Sign in
-              </Link>
-            )}
-          </div>
+            </li>
+          </ul>
         </div>
+        <div className={s.mobile}>
+          <Dropdown className={'bg-accent'} />
+        </div>
+        {/* {enabled && (
+          <div className={s.dropdown}>
+            <ul>
+              <li>
+                <Link href={'/'} className={s.link}>
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link href={'#demo'} className={s.link}>
+                  Product
+                </Link>
+              </li>
+              <li>
+                <Link href={'/pricing'} className={s.link}>
+                  Pricing
+                </Link>
+              </li>
+              <li>
+                <Link href={'#faq'} className={s.link}>
+                  FAQs
+                </Link>
+              </li>
+              <li>
+                <Link href={'#contact'} className={s.link}>
+                  Contact Us
+                </Link>
+              </li>
+              <li>
+                {user ? (
+                  <Link href={'/account'} className={s.link}>
+                    <Button>Account</Button>
+                  </Link>
+                ) : (
+                  <Link href={'/signin'} className={s.link}>
+                    <Button variant="slim">Sign In</Button>
+                  </Link>
+                )}
+              </li>
+            </ul>
+          </div>
+        )} */}
       </div>
     </nav>
-  );
+  )
 }

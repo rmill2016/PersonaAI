@@ -1,19 +1,19 @@
-'use client';
+'use client'
 
-import cn from 'classnames';
-import React, { forwardRef, useRef, ButtonHTMLAttributes } from 'react';
-import { mergeRefs } from 'react-merge-refs';
+import cn from 'classnames'
+import React, { forwardRef, useRef, ButtonHTMLAttributes } from 'react'
+import { mergeRefs } from 'react-merge-refs'
 
-import LoadingDots from '@/components/ui/LoadingDots';
+import LoadingDots from '@/components/ui/LoadingDots'
 
-import styles from './Button.module.css';
+import styles from './Button.module.css'
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'slim' | 'flat';
-  active?: boolean;
-  width?: number;
-  loading?: boolean;
-  Component?: React.ComponentType;
+  variant?: 'slim' | 'flat'
+  active?: boolean
+  width?: number
+  loading?: boolean
+  Component?: React.ComponentType
 }
 
 const Button = forwardRef<HTMLButtonElement, Props>((props, buttonRef) => {
@@ -28,8 +28,8 @@ const Button = forwardRef<HTMLButtonElement, Props>((props, buttonRef) => {
     style = {},
     Component = 'button',
     ...rest
-  } = props;
-  const ref = useRef(null);
+  } = props
+  const ref = useRef(null)
   const rootClassName = cn(
     styles.root,
     {
@@ -38,7 +38,7 @@ const Button = forwardRef<HTMLButtonElement, Props>((props, buttonRef) => {
       [styles.disabled]: disabled
     },
     className
-  );
+  )
   return (
     <Component
       aria-pressed={active}
@@ -59,7 +59,7 @@ const Button = forwardRef<HTMLButtonElement, Props>((props, buttonRef) => {
         </i>
       )}
     </Component>
-  );
-});
+  )
+})
 
-export default Button;
+export default Button

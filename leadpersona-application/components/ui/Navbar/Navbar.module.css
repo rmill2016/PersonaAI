@@ -1,19 +1,51 @@
 .root {
-  @apply sticky top-0 bg-black z-40 transition-all duration-150 h-16 md:h-20;
+  @apply md:h-28 bg-base font-inter rounded-b-2xl sticky top-0 w-full h-20 font-medium text-white shadow-md;
+}
+
+.navbar {
+  @apply container flex items-center justify-between w-full h-full;
 }
 
 .link {
-  @apply inline-flex items-center leading-6 font-medium transition ease-in-out duration-75 cursor-pointer text-zinc-200 rounded-md p-1;
+  @apply relative after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-accent;
 }
 
 .link:hover {
-  @apply text-zinc-100;
+  @apply after:w-full after:duration-300 after:origin-left after:ease-in-out;
 }
 
 .link:focus {
-  @apply outline-none text-zinc-100 ring-2 ring-pink-500 ring-opacity-50;
+  @apply ring-2 ring-secondary ring-opacity-50 outline-none;
 }
 
 .logo {
-  @apply cursor-pointer rounded-full transform duration-100 ease-in-out;
+  @apply w-14 h-14 md:w-20 md:h-20 cursor-pointer;
+}
+
+.left {
+  @apply flex items-center justify-start w-full h-full;
+}
+
+.right {
+  @apply md:inline-block hidden w-full h-full;
+}
+
+.right ul {
+  @apply flex items-center justify-end h-full gap-8;
+}
+
+.mobile {
+  @apply md:hidden relative flex items-center justify-end w-full h-full;
+}
+
+.dropdown {
+  @apply bg-base -bottom-2 absolute right-0 text-white rounded-lg;
+}
+
+.dropdown ul {
+  @apply flex flex-col items-center justify-start gap-4;
+}
+
+.signout {
+  @apply bg-accent font-inter rounded-xl hover:bg-opacity-50 hover:ring-2 hover:ring-white w-auto h-auto px-5 py-2 font-medium text-white;
 }

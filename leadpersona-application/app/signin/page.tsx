@@ -1,14 +1,14 @@
-import { getSession } from '@/app/supabase-server';
-import AuthUI from './AuthUI';
+import { getSession } from '@/app/supabase-server'
+import AuthUI from './AuthUI'
 
-import { redirect } from 'next/navigation';
-import Logo from '@/components/icons/Logo';
+import { redirect } from 'next/navigation'
+import Logo from '@/components/icons/Logo'
 
 export default async function SignIn() {
-  const session = await getSession();
+  const session = await getSession()
 
   if (session) {
-    return redirect('/account');
+    return redirect('/account')
   }
 
   return (
@@ -20,5 +20,5 @@ export default async function SignIn() {
         <AuthUI />
       </div>
     </div>
-  );
+  )
 }

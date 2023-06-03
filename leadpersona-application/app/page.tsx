@@ -1,23 +1,9 @@
-import Pricing from '@/components/Pricing';
-import {
-  getSession,
-  getSubscription,
-  getActiveProductsWithPrices
-} from '@/app/supabase-server';
+import React from 'react'
 
-export default async function PricingPage() {
-  const [session, products, subscription] = await Promise.all([
-    getSession(),
-    getActiveProductsWithPrices(),
-    getSubscription()
-  ]);
+type Props = {}
 
-  return (
-    <Pricing
-      session={session}
-      user={session?.user}
-      products={products}
-      subscription={subscription}
-    />
-  );
+const Homepage = (props: Props) => {
+  return <div>Homepage</div>
 }
+
+export default Homepage

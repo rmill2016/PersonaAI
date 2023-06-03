@@ -1,18 +1,18 @@
-import SupabaseProvider from './supabase-provider';
-import Footer from '@/components/ui/Footer';
-import Navbar from '@/components/ui/Navbar';
-import { PropsWithChildren } from 'react';
-import 'styles/main.css';
+import SupabaseProvider from './supabase-provider'
+import Footer from '@/components/ui/Footer'
+import Navbar from '@/components/ui/Navbar'
+import { PropsWithChildren } from 'react'
+import 'styles/main.css'
 
 const meta = {
-  title: 'Next.js Subscription Starter',
-  description: 'Brought to you by Vercel, Stripe, and Supabase.',
-  cardImage: '/og.png',
+  title: 'LeadPersona',
+  description: 'Your AI Leader For Business Outreach',
+  cardImage: '/Logo.png',
   robots: 'follow, index',
   favicon: '/favicon.ico',
-  url: 'https://subscription-starter.vercel.app',
+  url: 'https://leadpersona-application-git-dev-rmill2016.vercel.app/',
   type: 'website'
-};
+}
 
 export const metadata = {
   title: meta.title,
@@ -37,7 +37,7 @@ export const metadata = {
     description: meta.description,
     cardImage: meta.cardImage
   }
-};
+}
 
 export default function RootLayout({
   // Layouts must accept a children prop.
@@ -46,7 +46,7 @@ export default function RootLayout({
 }: PropsWithChildren) {
   return (
     <html lang="en">
-      <body className="bg-black loading">
+      <body className="loading bg-black">
         <SupabaseProvider>
           {/* @ts-expect-error */}
           <Navbar />
@@ -60,5 +60,5 @@ export default function RootLayout({
         </SupabaseProvider>
       </body>
     </html>
-  );
+  )
 }
