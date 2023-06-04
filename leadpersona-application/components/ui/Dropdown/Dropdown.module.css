@@ -1,3 +1,7 @@
 .root {
-  @apply text-white bg-black;
+  @apply relative;
+}
+
+.root ul {
+  @apply bg-accent rounded-xl top-20 absolute right-0 flex-col items-start justify-center w-32 h-auto gap-4 p-4 text-white;
 }

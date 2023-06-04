@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import Link from 'next/link'
 import { createServerSupabaseClient } from '@/app/supabase-server'
 
@@ -63,50 +63,8 @@ export default async function Navbar() {
           </ul>
         </div>
         <div className={s.mobile}>
-          <Dropdown className={'bg-accent'} />
+          <Dropdown user={user} />
         </div>
-        {/* {enabled && (
-          <div className={s.dropdown}>
-            <ul>
-              <li>
-                <Link href={'/'} className={s.link}>
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link href={'#demo'} className={s.link}>
-                  Product
-                </Link>
-              </li>
-              <li>
-                <Link href={'/pricing'} className={s.link}>
-                  Pricing
-                </Link>
-              </li>
-              <li>
-                <Link href={'#faq'} className={s.link}>
-                  FAQs
-                </Link>
-              </li>
-              <li>
-                <Link href={'#contact'} className={s.link}>
-                  Contact Us
-                </Link>
-              </li>
-              <li>
-                {user ? (
-                  <Link href={'/account'} className={s.link}>
-                    <Button>Account</Button>
-                  </Link>
-                ) : (
-                  <Link href={'/signin'} className={s.link}>
-                    <Button variant="slim">Sign In</Button>
-                  </Link>
-                )}
-              </li>
-            </ul>
-          </div>
-        )} */}
       </div>
     </nav>
   )

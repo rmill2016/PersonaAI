@@ -2,19 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
-}
-
-html {
-  height: 100%;
-  box-sizing: border-box;
-  touch-action: manipulation;
-  font-feature-settings: 'case' 1, 'rlig' 1, 'calt' 0;
-}
-
 html,
 body {
   text-rendering: optimizeLegibility;
@@ -22,8 +9,11 @@ body {
   @apply bg-base font-inter antialiased text-white;
 }
 
+main {
+  @apply min-h-[calc(100dvh-4rem)] md:min-h-[calc(100dvh-5rem)];
+}
+
 body {
-  position: relative;
   min-height: 100%;
   margin: 0;
 }
