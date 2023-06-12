@@ -9,10 +9,11 @@ import { Database } from '@/types_db'
 import { createServerActionClient } from '@supabase/auth-helpers-nextjs'
 import { revalidatePath } from 'next/cache'
 import { cookies } from 'next/headers'
+import Toast from '@/components/ui/Toast'
 import Link from 'next/link'
 import { redirect } from 'next/navigation'
-import { ReactNode } from 'react'
 import SignOut from '@/components/ui/Navbar/SignOutButton'
+import Card from '@/components/ui/Card'
 
 export default async function Account() {
   const [session, userDetails, subscription] = await Promise.all([
@@ -50,6 +51,7 @@ export default async function Account() {
       console.log(error)
     }
     revalidatePath('/account')
+    return <Toast type={'success'} message="Success!" />
   }
 
   const updateEmail = async (formData: FormData) => {
@@ -65,14 +67,14 @@ export default async function Account() {
   }
 
   return (
-    <section className="mb-32 bg-black">
+    <section className="mb-32">
       <div className="sm:px-6 sm:pt-24 lg:px-8 max-w-6xl px-4 py-8 mx-auto">
         <div className="sm:align-center sm:flex sm:flex-col">
-          <h1 className="sm:text-center sm:text-6xl text-4xl font-extrabold text-white">
-            Account
+          <h1 className="sm:text-center sm:text-6xl text-4xl font-extrabold text-white capitalize">
+            your account
           </h1>
-          <p className="text-zinc-200 sm:text-center sm:text-2xl max-w-2xl m-auto mt-5 text-xl">
-            We partnered with Stripe for a simplified billing.
+          <p className="sm:text-center sm:text-2xl max-w-2xl m-auto mt-5 text-xl text-white capitalize">
+            manage your stripe customer portal here
           </p>
         </div>
       </div>
@@ -96,7 +98,7 @@ export default async function Account() {
         </Card>
         <Card
           title="Your Name"
-          description="Please enter your full name, or a display name you are comfortable with."
+          description="Please enter your full name."
           footer={
             <div className="sm:flex-row sm:items-center flex flex-col items-start justify-between">
               <p className="sm:pb-0 pb-4">64 characters maximum</p>
@@ -106,22 +108,20 @@ export default async function Account() {
             </div>
           }
         >
-          <div className="mt-8 mb-4 text-xl font-semibold">
-            <form id="nameForm" action={updateName}>
-              <input
-                type="text"
-                name="name"
-                className="bg-zinc-800 w-1/2 p-3 rounded-md"
-                defaultValue={userDetails?.full_name ?? ''}
-                placeholder="Your name"
-                maxLength={64}
-              />
-            </form>
-          </div>
+          <form id="nameForm" action={updateName} className="mt-2">
+            <input
+              type="text"
+              name="name"
+              defaultValue={userDetails?.full_name ?? ''}
+              placeholder="Your name"
+              maxLength={64}
+              className="bg-zinc-900 focus:border-secondary focus:ring-secondary w-full text-white border border-white rounded-md"
+            />
+          </form>
         </Card>
         <Card
           title="Your Email"
-          description="Please enter the email address you want to use to login."
+          description="Please enter the email address you wish to login with."
           footer={
             <div className="sm:flex-row sm:items-center flex flex-col items-start justify-between">
               <p className="sm:pb-0 pb-4">
@@ -133,45 +133,21 @@ export default async function Account() {
             </div>
           }
         >
-          <div className="mt-8 mb-4 text-xl font-semibold">
-            <form id="emailForm" action={updateEmail}>
-              <input
-                type="text"
-                name="email"
-                className="bg-zinc-800 w-1/2 p-3 rounded-md"
-                defaultValue={user ? user.email : ''}
-                placeholder="Your email"
-                maxLength={64}
-              />
-            </form>
-          </div>
+          <form id="emailForm" action={updateEmail} className="mt-2">
+            <input
+              type="email"
+              name="email"
+              defaultValue={user?.email ?? ''}
+              placeholder="Your email"
+              maxLength={64}
+              className="bg-zinc-900 focus:border-secondary focus:ring-secondary w-full text-white border border-white rounded-md"
+            />
+          </form>
         </Card>
         <div className="flex items-center justify-center w-full h-20">
           <SignOut />
         </div>
       </div>
     </section>
-  )
-}
-
-interface Props {
-  title: string
-  description?: string
-  footer?: ReactNode
-  children: ReactNode
-}
-
-function Card({ title, description, footer, children }: Props) {
-  return (
-    <div className="p border-zinc-700 w-full max-w-3xl m-auto my-8 border rounded-md">
-      <div className="px-5 py-4">
-        <h3 className="mb-1 text-2xl font-medium">{title}</h3>
-        <p className="text-zinc-300">{description}</p>
-        {children}
-      </div>
-      <div className="rounded-b-md border-zinc-700 bg-zinc-900 text-zinc-500 p-4 border-t">
-        {footer}
-      </div>
-    </div>
   )
 }

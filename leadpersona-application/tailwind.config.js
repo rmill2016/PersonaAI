@@ -30,6 +30,7 @@ module.exports = {
         primary: '#28616F',
         secondary: '#0D3C4C',
         accent: '#35BE9C',
+        'accent-darken': '#1e8970',
         gray: '#ABAEAC'
       }
     }
