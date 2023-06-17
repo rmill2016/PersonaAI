@@ -18,8 +18,8 @@
   @apply bg-zinc-700 text-zinc-500 border-zinc-600 cursor-not-allowed;
 }
 
-.slim {
-  @apply transform-none py-2 normal-case;
+.outline {
+  @apply border-accent text-accent bg-transparent border;
 }
 
 .disabled,

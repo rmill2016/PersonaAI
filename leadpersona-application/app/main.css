@@ -22,6 +22,27 @@ a {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+@layer base {
+  h1 {
+    @apply text-6xl font-bold;
+  }
+  h2 {
+    @apply text-4xl font-bold;
+  }
+  h3 {
+    @apply text-3xl;
+  }
+  h4 {
+    @apply text-2xl;
+  }
+  p {
+    @apply text-lg;
+  }
+  p.small {
+    @apply text-sm;
+  }
+}
+
 .animated {
   -webkit-animation-duration: 1s;
   animation-duration: 1s;
