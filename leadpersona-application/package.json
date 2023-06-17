@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "prettier --config .prettierrc -w .",
     "stripe:listen": "stripe listen --forward-to=localhost:3000/api/webhooks --project-name=saas-starter",
-    "generate-types": "npx supabase gen types typescript --project-id YOUR_PROJECT_ID --schema public > types_db.ts"
+    "generate-types": "npx supabase gen types typescript --project-id YOUR_PROJECT_ID --schema public > types_db.ts",
+    "purge": "tailwindcss -i ./app/main.css -o ./app/styles.css -m -w"
   },
   "dependencies": {
     "@stripe/stripe-js": "^1.53.0",

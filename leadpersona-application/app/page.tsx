@@ -6,7 +6,7 @@ type Props = {}
 const Homepage = (props: Props) => {
   return (
     <section>
-      <div className="flex flex-col w-full h-full">
+      <div className="container flex flex-col w-full h-full py-20">
         <h1 className="font-bold">
           LeadPeronsa | <span className="text-accent">Your AI Leader</span>
         </h1>
