@@ -18,28 +18,24 @@ body {
   margin: 0;
 }
 
-a {
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
-
 @layer base {
   h1 {
-    @apply md:text-5xl lg:text-6xl text-4xl font-bold;
+    @apply md:text-5xl lg:text-6xl text-4xl font-bold text-white;
   }
   h2 {
-    @apply md:text-3xl lg:text-4xl text-2xl font-bold;
+    @apply md:text-3xl lg:text-4xl text-2xl font-bold text-white;
   }
   h3 {
-    @apply md:text-2xl lg:text-3xl text-xl;
+    @apply md:text-2xl lg:text-3xl text-xl text-white;
   }
   h4 {
-    @apply md:text-xl lg:text-2xl text-lg;
+    @apply md:text-xl lg:text-2xl text-lg text-white;
   }
   p {
-    @apply md:text-lg text-base;
+    @apply md:text-lg text-base text-white;
   }
   p.small {
-    @apply md:text-base text-sm;
+    @apply md:text-base text-sm text-white;
   }
 }
 

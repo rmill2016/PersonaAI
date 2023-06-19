@@ -51,7 +51,6 @@ export default async function Account() {
       console.log(error)
     }
     revalidatePath('/account')
-    return <Toast type={'success'} message="Success!" />
   }
 
   const updateEmail = async (formData: FormData) => {
@@ -102,7 +101,12 @@ export default async function Account() {
           footer={
             <div className="sm:flex-row sm:items-center flex flex-col items-start justify-between">
               <p className="sm:pb-0 pb-4">64 characters maximum</p>
-              <Button variant="slim" type="submit" form="nameForm">
+              <Button
+                variant="filled"
+                className="bg-accent text-white"
+                type="submit"
+                form="nameForm"
+              >
                 Update Name
               </Button>
             </div>
@@ -127,7 +131,12 @@ export default async function Account() {
               <p className="sm:pb-0 pb-4">
                 We will email you to verify the change.
               </p>
-              <Button variant="slim" type="submit" form="emailForm">
+              <Button
+                variant="filled"
+                className="bg-accent text-white"
+                type="submit"
+                form="emailForm"
+              >
                 Update Email
               </Button>
             </div>

@@ -29,7 +29,7 @@ interface Props {
   subscription: SubscriptionWithProduct | null
 }
 
-type BillingInterval = 'lifetime' | 'year' | 'month'
+type BillingInterval = 'year' | 'month'
 
 export default function Pricing({
   session,
@@ -72,9 +72,9 @@ export default function Pricing({
     }
   }
 
-  if (!products.length)
+  /* if (!products.length)
     return (
-      <section className="bg-black">
+      <section className="bg-base">
         <div className="sm:py-24 sm:px-6 lg:px-8 max-w-6xl px-4 py-8 mx-auto">
           <div className="sm:flex sm:flex-col sm:align-center"></div>
           <p className="sm:text-center sm:text-6xl text-4xl font-extrabold text-white">
@@ -91,11 +91,11 @@ export default function Pricing({
           </p>
         </div>
       </section>
-    )
+    ) */
 
   if (products.length === 1)
     return (
-      <section className="bg-black">
+      <section className="bg-base">
         <div className="sm:py-24 sm:px-6 lg:px-8 max-w-6xl px-4 py-8 mx-auto">
           <div className="sm:flex sm:flex-col sm:align-center">
             <h1 className="sm:text-center sm:text-6xl text-4xl font-extrabold text-white">
@@ -138,7 +138,7 @@ export default function Pricing({
                       </p>
                       <p className="text-zinc-300 mt-4">{price.description}</p>
                       <Button
-                        variant="slim"
+                        variant="filled"
                         type="button"
                         disabled={false}
                         loading={priceIdLoading === price.id}
@@ -161,26 +161,23 @@ export default function Pricing({
     )
 
   return (
-    <section className="bg-black">
+    <section className="bg-base">
       <div className="sm:py-24 sm:px-6 lg:px-8 max-w-6xl px-4 py-8 mx-auto">
         <div className="sm:flex sm:flex-col sm:align-center">
-          <h1 className="sm:text-center sm:text-6xl text-4xl font-extrabold text-white">
-            Pricing Plans
-          </h1>
-          <p className="text-zinc-200 sm:text-center sm:text-2xl max-w-2xl m-auto mt-5 text-xl">
-            Start building for free, then add a site plan to go live. Account
-            plans unlock additional features.
+          <h1 className="text-center">LeadPersona Pricing</h1>
+          <p className="mt-4 text-center text-white">
+            We offer monthly and yearly plans for our services
           </p>
-          <div className="relative self-center mt-6 bg-zinc-900 rounded-lg p-0.5 flex sm:mt-8 border border-zinc-800">
+          <div className="relative self-center mt-6 bg-zinc-900 rounded-lg p-0.5 flex sm:mt-8 ">
             {intervals.includes('month') && (
               <button
                 onClick={() => setBillingInterval('month')}
                 type="button"
                 className={`${
                   billingInterval === 'month'
-                    ? 'relative w-1/2 bg-zinc-700 border-zinc-800 shadow-sm text-white'
-                    : 'ml-0.5 relative w-1/2 border border-transparent text-zinc-400'
-                } rounded-md m-1 py-2 text-sm font-medium whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-opacity-50 focus:z-10 sm:w-auto sm:px-8`}
+                    ? 'relative w-1/2 bg-accent shadow-sm text-white'
+                    : 'ml-0.5 relative w-1/2 border border-transparent text-white'
+                } rounded-md m-1 py-2 text-sm font-medium whitespace-nowrap  focus:z-10 sm:w-auto sm:px-8`}
               >
                 Monthly billing
               </button>
@@ -191,9 +188,9 @@ export default function Pricing({
                 type="button"
                 className={`${
                   billingInterval === 'year'
-                    ? 'relative w-1/2 bg-zinc-700 border-zinc-800 shadow-sm text-white'
-                    : 'ml-0.5 relative w-1/2 border border-transparent text-zinc-400'
-                } rounded-md m-1 py-2 text-sm font-medium whitespace-nowrap focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-opacity-50 focus:z-10 sm:w-auto sm:px-8`}
+                    ? 'relative w-1/2 bg-accent shadow-sm text-white'
+                    : 'ml-0.5 relative w-1/2 border border-transparent text-white'
+                } rounded-md m-1 py-2 text-sm font-medium whitespace-nowrap  focus:z-10 sm:w-auto sm:px-8`}
               >
                 Yearly billing
               </button>
@@ -214,14 +211,11 @@ export default function Pricing({
             return (
               <div
                 key={product.id}
-                className={cn(
-                  'rounded-lg shadow-sm divide-y divide-zinc-600 bg-zinc-900',
-                  {
-                    'border border-secondary': subscription
-                      ? product.name === subscription?.prices?.products?.name
-                      : product.name === 'Freelancer'
-                  }
-                )}
+                className={cn('rounded-lg shadow-sm bg-zinc-900', {
+                  'border border-secondary': subscription
+                    ? product.name === subscription?.prices?.products?.name
+                    : product.name === 'Freelancer'
+                })}
               >
                 <div className="p-6">
                   <h2 className="text-2xl font-semibold leading-6 text-white">
@@ -229,7 +223,7 @@ export default function Pricing({
                   </h2>
                   <p className="text-zinc-300 mt-4">{product.description}</p>
                   <p className="mt-8">
-                    <span className="white text-5xl font-extrabold">
+                    <span className="text-5xl font-extrabold text-white">
                       {priceString}
                     </span>
                     <span className="text-zinc-100 text-base font-medium">
@@ -237,12 +231,12 @@ export default function Pricing({
                     </span>
                   </p>
                   <Button
-                    variant="slim"
+                    variant="filled"
                     type="button"
                     disabled={!session}
                     loading={priceIdLoading === price.id}
                     onClick={() => handleCheckout(price)}
-                    className="hover:bg-zinc-900 block w-full py-2 mt-8 text-sm font-semibold text-center text-white rounded-md"
+                    className="bg-accent  mt-8 text-white"
                   >
                     {product.name === subscription?.prices?.products?.name
                       ? 'Manage'

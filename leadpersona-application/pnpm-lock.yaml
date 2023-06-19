@@ -8,6 +8,9 @@ dependencies:
   '@stripe/stripe-js':
     specifier: ^1.53.0
     version: 1.54.0
+  '@studio-freight/lenis':
+    specifier: ^1.0.16
+    version: 1.0.16
   '@supabase/auth-helpers-nextjs':
     specifier: ^0.7.0
     version: 0.7.0(@supabase/supabase-js@2.24.0)
@@ -536,6 +539,10 @@ packages:
 
   /@stripe/stripe-js@1.54.0:
     resolution: {integrity: sha512-nElTXkS+nMfDNMkWfLmyeqHQfMGJ1JjrjAVMibV61Oc/rYdUv0cKRYCi1l4ivZ5SySB3vQLcLolxbKBkbNznZA==}
+    dev: false
+
+  /@studio-freight/lenis@1.0.16:
+    resolution: {integrity: sha512-OeCBCafpaIfqFov4of/+cArunTL6wuN8hQkx3w/yJTh9Y84O82Y7tZ1xvU/HlvH+1M/tpltruxpddaI7ydTrnQ==}
     dev: false
 
   /@supabase/auth-helpers-nextjs@0.7.0(@supabase/supabase-js@2.24.0):

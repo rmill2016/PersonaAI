@@ -7,12 +7,14 @@ import { mergeRefs } from 'react-merge-refs'
 import LoadingDots from '@/components/ui/LoadingDots'
 
 import styles from './Button.module.css'
+import { IconType } from 'react-icons'
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'filled' | 'outline'
   active?: boolean
   width?: number
   loading?: boolean
+  icon?: IconType
   Component?: React.ComponentType
 }
 
@@ -25,6 +27,7 @@ const Button = forwardRef<HTMLButtonElement, Props>((props, buttonRef) => {
     width,
     loading = false,
     disabled = false,
+    icon: Icon,
     style = {},
     Component = 'button',
     ...rest
@@ -53,6 +56,7 @@ const Button = forwardRef<HTMLButtonElement, Props>((props, buttonRef) => {
       {...rest}
     >
       {children}
+      {Icon && <Icon className="self-center w-6 h-6 ml-2" />}
       {loading && (
         <i className="flex pl-2 m-0">
           <LoadingDots />

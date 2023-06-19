@@ -1,0 +1,43 @@
+.root {
+  @apply md:py-20 container flex flex-col w-full h-full gap-8 py-10;
+}
+
+.root:first-of-type {
+  @apply relative;
+}
+
+.headline {
+  @apply text-center;
+}
+
+.headline span {
+  @apply text-accent;
+}
+
+.description {
+  @apply md:text-left flex flex-col items-center justify-start gap-8 text-center;
+}
+
+.buttons {
+  @apply md:justify-start flex justify-center w-full gap-8;
+}
+
+.buttons button:first-child {
+  @apply bg-accent;
+}
+
+.homeImage {
+  @apply w-80 h-auto md:w-96 lg:w-[400px] m-auto;
+}
+
+.homeBackground {
+  @apply -z-10 absolute inset-0 object-cover h-full;
+}
+
+.headlineLaptop {
+  @apply flex flex-col items-center justify-start gap-2;
+}
+
+.headlineLaptop > * {
+  @apply text-center;
+}

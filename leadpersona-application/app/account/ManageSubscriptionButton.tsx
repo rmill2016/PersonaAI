@@ -24,12 +24,13 @@ export default function ManageSubscriptionButton({ session }: Props) {
   }
 
   return (
-    <div className="flex flex-col items-start justify-between sm:flex-row sm:items-center">
-      <p className="pb-4 sm:pb-0">Manage your subscription on Stripe.</p>
+    <div className="sm:flex-row sm:items-center flex flex-col items-start justify-between">
+      <p className="sm:pb-0 pb-4">Manage your subscription on Stripe.</p>
       <Button
-        variant="slim"
+        variant="filled"
         disabled={!session}
         onClick={redirectToCustomerPortal}
+        className="bg-accent text-white"
       >
         Open customer portal
       </Button>

@@ -23,7 +23,7 @@
 }
 
 .left {
-  @apply flex items-center justify-start w-full h-full;
+  @apply flex items-center justify-start w-auto h-full;
 }
 
 .right {
@@ -35,15 +35,7 @@
 }
 
 .mobile {
-  @apply md:hidden flex items-center justify-end w-full h-full;
-}
-
-.dropdown {
-  @apply bg-base -bottom-2 absolute right-0 text-white rounded-lg;
-}
-
-.dropdown ul {
-  @apply flex flex-col items-center justify-start gap-4;
+  @apply md:hidden relative flex items-center justify-end w-full h-full;
 }
 
 .signout {

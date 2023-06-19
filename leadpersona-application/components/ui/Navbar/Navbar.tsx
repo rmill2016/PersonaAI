@@ -4,7 +4,7 @@ import { createServerSupabaseClient } from '@/app/supabase-server'
 
 import Logo from '@/components/icons/Logo'
 import Button from '@/components/ui/Button'
-import Dropdown from '@/components/ui/Dropdown'
+import Dropdown from '@/components/ui/Menu'
 
 import s from './Navbar.module.css'
 
@@ -30,7 +30,7 @@ export default async function Navbar() {
               </Link>
             </li>
             <li>
-              <Link href={'#demo'} className={s.link}>
+              <Link href={'#product'} className={s.link}>
                 Product
               </Link>
             </li>
@@ -56,7 +56,9 @@ export default async function Navbar() {
                 </Link>
               ) : (
                 <Link href={'/signin'}>
-                  <Button>Sign In</Button>
+                  <Button variant="filled" className="bg-accent">
+                    Sign In
+                  </Button>
                 </Link>
               )}
             </li>

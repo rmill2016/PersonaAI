@@ -1,5 +1,5 @@
 .root {
-  @apply bg-accent rounded-xl font-inter w-auto h-auto px-5 py-3 font-medium leading-6 text-white;
+  @apply rounded-xl font-inter flex w-auto h-auto px-5 py-3 font-medium leading-6;
 }
 
 .root:hover {
@@ -18,8 +18,12 @@
   @apply bg-zinc-700 text-zinc-500 border-zinc-600 cursor-not-allowed;
 }
 
+.filled {
+  @apply text-accent bg-white;
+}
+
 .outline {
-  @apply border-accent text-accent bg-transparent border;
+  @apply border-accent text-accent hover:text-white focus:text-white bg-transparent border;
 }
 
 .disabled,
