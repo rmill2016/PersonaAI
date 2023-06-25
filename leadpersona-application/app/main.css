@@ -6,11 +6,7 @@ html,
 body {
   text-rendering: optimizeLegibility;
   -moz-osx-font-smoothing: grayscale;
-  @apply bg-base font-inter antialiased text-white;
-}
-
-main {
-  @apply min-h-[calc(100dvh-4rem)] md:min-h-[calc(100dvh-5rem)];
+  @apply bg-base font-inter scroll-smooth overflow-x-hidden antialiased text-white;
 }
 
 body {
@@ -47,9 +43,5 @@ body {
     animation-duration: 1s;
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
-  }
-
-  .height-screen-helper {
-    height: calc(100vh - 80px);
   }
 }

@@ -12,6 +12,8 @@
     "purge": "tailwindcss -i ./app/main.css -o ./app/styles.css -m -w"
   },
   "dependencies": {
+    "@react-three/drei": "^9.77.3",
+    "@react-three/fiber": "^8.13.3",
     "@stripe/stripe-js": "^1.53.0",
     "@studio-freight/lenis": "^1.0.16",
     "@supabase/auth-helpers-nextjs": "^0.7.0",
@@ -19,6 +21,8 @@
     "@supabase/auth-ui-shared": "^0.1.6",
     "@supabase/supabase-js": "^2.23.0",
     "classnames": "^2.3.2",
+    "flowbite": "^1.6.6",
+    "gsap": "^3.12.1",
     "next": "13.4.5",
     "node-fetch": "^3.3.1",
     "react": "^18.2.0",

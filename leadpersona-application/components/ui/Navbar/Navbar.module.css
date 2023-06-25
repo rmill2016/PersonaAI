@@ -1,5 +1,5 @@
 .root {
-  @apply md:h-28 bg-base font-inter rounded-b-2xl sticky top-0 z-40 w-full h-20 font-medium text-white shadow-md;
+  @apply md:h-28 bg-base font-inter rounded-b-2xl fixed top-0 z-40 w-full h-20 font-medium text-white shadow-md;
 }
 
 .navbar {

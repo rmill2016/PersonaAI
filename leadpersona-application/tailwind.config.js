@@ -6,7 +6,8 @@ module.exports = {
   content: [
     'app/**/*.{ts,tsx}',
     'components/**/*.{ts,tsx}',
-    'pages/**/*.{ts,tsx}'
+    'pages/**/*.{ts,tsx}',
+    'node_modules/flowbite/**/*.js'
   ],
   theme: {
     container: {
@@ -32,8 +33,18 @@ module.exports = {
         accent: '#35BE9C',
         'accent-darken': '#1e8970',
         gray: '#ABAEAC'
+      },
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))'
+      },
+      transitionProperty: {
+        width: 'width'
       }
     }
   },
-  plugins: [require('@tailwindcss/forms'), require('tailwindcss-font-inter')]
+  plugins: [
+    require('@tailwindcss/forms'),
+    require('tailwindcss-font-inter'),
+    require('flowbite/plugin')
+  ]
 }

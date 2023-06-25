@@ -1,42 +1,7 @@
-.menu {
-  @apply relative w-0;
-}
-
-.menu.open {
-  @apply w-[70%];
-}
-
 .menuPanel {
-  @apply top-10 -right-5 bg-accent absolute transition-opacity duration-500 origin-right opacity-0;
+  @apply bg-accent -right-5 transition-width absolute top-0 z-20 flex-col items-center justify-between w-0 h-screen py-32 text-white duration-1000 ease-out;
 }
 
-.menu.open .menuPanel {
-  opacity: 1;
-}
-
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-.menuLink {
-  opacity: 0;
-  animation: fade-in-delay 0.5s forwards;
-}
-
-.menu.open .menuLink {
-  animation-delay: 0.5s;
-}
-
-@keyframes fade-in-delay {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+.menuPanel .menuLink {
+  @apply opacity-0;
 }

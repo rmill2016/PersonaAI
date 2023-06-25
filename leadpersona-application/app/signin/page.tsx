@@ -12,7 +12,7 @@ export default async function SignIn() {
   }
 
   return (
-    <div className="height-screen-helper flex flex-col items-center justify-center gap-5 p-4">
+    <div className="container flex flex-col items-center justify-center pt-32 pb-20">
       <Logo width={120} height={120} />
       <div className="w-full h-auto max-w-[500px]">
         <AuthUI />

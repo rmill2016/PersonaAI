@@ -2,6 +2,7 @@ import SupabaseProvider from './supabase-provider'
 import Footer from '@/components/ui/Footer'
 import Navbar from '@/components/ui/Navbar'
 import { PropsWithChildren } from 'react'
+import Script from 'next/script'
 
 import './main.css'
 
@@ -52,6 +53,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
           <Footer />
         </SupabaseProvider>
       </body>
+      <script src="./node_modules/flowbite/dist/flowbite.min.js"></script>
     </html>
   )
 }

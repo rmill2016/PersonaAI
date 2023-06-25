@@ -1,43 +1,72 @@
-.root {
-  @apply md:py-20 container flex flex-col w-full h-full gap-8 py-10;
+.homepage {
+  @apply relative z-auto w-full h-full pt-20;
 }
 
-.root:first-of-type {
-  @apply relative;
+.homepageContainer {
+  @apply md:pt-20 lg:grid lg:grid-cols-2 lg:grid-flow-row container relative z-10 flex flex-col w-full h-full max-w-screen-lg gap-10 pt-10;
 }
 
-.headline {
-  @apply text-center;
+.homepageContainer h1 {
+  @apply lg:col-span-full text-center;
 }
 
-.headline span {
-  @apply text-accent;
+.homepageContainer h2,
+.homepageContainer h4 {
+  @apply lg:text-left text-center;
 }
 
-.description {
-  @apply md:text-left flex flex-col items-center justify-start gap-8 text-center;
+.background {
+  background-image: radial-gradient(circle at center, #071e2c8e 0%, #071e2c 85%),
+    url('/home_bg.jpg');
+  @apply absolute inset-0 z-[1] bg-cover bg-center w-full h-full;
 }
 
-.buttons {
-  @apply md:justify-start flex justify-center w-full gap-8;
+.homeLeft {
+  @apply md:flex-row lg:col-start-1 flex flex-col justify-center w-full h-auto;
 }
 
-.buttons button:first-child {
-  @apply bg-accent;
+.homeLeft ul {
+  @apply md:gap-8 md:mt-10 flex flex-col items-start w-full h-auto gap-4;
 }
 
-.homeImage {
-  @apply w-80 h-auto md:w-96 lg:w-[400px] m-auto;
+.homeLeft ul li {
+  @apply lg:self-start flex self-center gap-10;
 }
 
-.homeBackground {
-  @apply -z-10 absolute inset-0 object-cover h-full;
+.homeRight {
+  @apply lg:col-start-2 w-full h-auto;
 }
 
-.headlineLaptop {
-  @apply flex flex-col items-center justify-start gap-2;
+.homeRight img {
+  @apply md:w-80 w-64 h-auto m-auto;
 }
 
-.headlineLaptop > * {
-  @apply text-center;
+.product {
+  @apply md:py-20 h-[calc(100dvh-4rem)] container flex flex-col justify-between py-10;
+}
+
+.product h2 {
+  @apply mb-2 text-center;
+}
+
+.product h4 {
+  @apply mb-10 text-center;
+}
+
+.product button {
+  @apply self-center;
+}
+
+.faqs {
+  @apply container relative h-auto py-20 overflow-hidden;
+}
+
+.blTriangle {
+  clip-path: polygon(0 0, 0% 100%, 100% 100%);
+  @apply bg-accent md:w-32 md:h-32 lg:w-40 lg:h-40 absolute bottom-0 left-0 w-20 h-20;
+}
+
+.trTriangle {
+  clip-path: polygon(0 0, 100% 0, 100% 100%);
+  @apply bg-accent md:w-32 md:h-32 lg:w-40 lg:h-40 absolute top-0 right-0 w-20 h-20;
 }

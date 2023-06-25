@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
+import { headers } from 'next/headers'
 import { createServerSupabaseClient } from '@/app/supabase-server'
 
 import Logo from '@/components/icons/Logo'
@@ -13,6 +14,10 @@ export default async function Navbar() {
   const {
     data: { user }
   } = await supabase.auth.getUser()
+  const headersList = headers()
+  const url = headersList.get('referer') || ''
+
+  console.log(url)
 
   return (
     <nav className={s.root}>
