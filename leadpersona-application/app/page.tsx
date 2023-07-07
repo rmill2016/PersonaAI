@@ -9,22 +9,26 @@ import Lenis from '@studio-freight/lenis'
 import Accordion from '@/components/ui/Accordion/Accordion'
 import ContactForm from '@/components/ui/ContactForm/ContactForm'
 
-const faqList: Array<{ title: string; content: string }> = [
+const faqList: Array<{ title: string; content: string; id: number }> = [
   {
     title: 'Why Choose LeadPersona Over Competitors?',
-    content: 'because...'
+    content: 'because...',
+    id: 1
   },
   {
     title: 'Why Choose LeadPersona Over Competitors?',
-    content: 'because...'
+    content: 'because...',
+    id: 2
   },
   {
     title: 'Why Choose LeadPersona Over Competitors?',
-    content: 'because...'
+    content: 'because...',
+    id: 3
   },
   {
     title: 'Why Choose LeadPersona Over Competitors?',
-    content: 'because...'
+    content: 'because...',
+    id: 4
   }
 ]
 

@@ -7,6 +7,7 @@ type Props = {
   panel: {
     title: string
     content: string
+    id: number
   }[]
 }
 
@@ -14,10 +15,14 @@ const DropdownComponent = ({ panel }: Props) => {
   return (
     <Accordion
       collapseAll
-      className="md:gap-20 lg:gap-24 flex flex-col w-full h-auto max-w-screen-md gap-10 my-auto border-none divide-y-0 outline-none"
+      className="md:gap-8 lg:gap-12 flex flex-col w-full h-auto max-w-screen-md gap-4 my-auto border-none divide-y-0 outline-none"
     >
       {panel.map((accordion) => (
-        <Accordion.Panel collapseAll>
+        <Accordion.Panel
+          key={accordion.id}
+          collapseAll
+          className="flex flex-col gap-2"
+        >
           <Accordion.Title>
             <h4>{accordion.title}</h4>
           </Accordion.Title>

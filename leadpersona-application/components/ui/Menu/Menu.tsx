@@ -4,7 +4,6 @@ import React, { useState, useEffect, useRef } from 'react'
 import cn from 'classnames'
 import s from './Menu.module.css'
 import Button from '@/components/ui/Button'
-import Link from 'next/link'
 import { User } from '@supabase/supabase-js'
 import { FaBars } from 'react-icons/fa'
 
@@ -57,54 +56,57 @@ const Dropdown = ({ className, user }: Props) => {
         })}
       >
         <li className={rootLink}>
-          <Link href={enabled ? '/' : ''} onClick={() => setEnabled(false)}>
+          <a href={enabled ? '/' : undefined} onClick={() => setEnabled(false)}>
             Home
-          </Link>
+          </a>
         </li>
         <li className={rootLink}>
-          <Link
-            href={enabled ? '#product' : ''}
+          <a
+            href={enabled ? '#product' : undefined}
             onClick={() => setEnabled(false)}
           >
             Product
-          </Link>
+          </a>
         </li>
         <li className={rootLink}>
-          <Link
-            href={enabled ? '/pricing' : ''}
+          <a
+            href={enabled ? '/pricing' : undefined}
             onClick={() => setEnabled(false)}
           >
             Pricing
-          </Link>
+          </a>
         </li>
         <li className={rootLink}>
-          <Link href={enabled ? '#faq' : ''} onClick={() => setEnabled(false)}>
+          <a
+            href={enabled ? '#faq' : undefined}
+            onClick={() => setEnabled(false)}
+          >
             FAQs
-          </Link>
+          </a>
         </li>
         <li className={rootLink}>
-          <Link
-            href={enabled ? '#contact' : ''}
+          <a
+            href={enabled ? '#contact' : undefined}
             onClick={() => setEnabled(false)}
           >
             Contact Us
-          </Link>
+          </a>
         </li>
         <li className={rootLink}>
           {user ? (
-            <Link
-              href={enabled ? '/account' : ''}
+            <a
+              href={enabled ? '/account' : undefined}
               onClick={() => setEnabled(false)}
             >
               <Button className="text-accent bg-white">Account</Button>
-            </Link>
+            </a>
           ) : (
-            <Link
-              href={enabled ? '/signin' : ''}
+            <a
+              href={enabled ? '/signin' : undefined}
               onClick={() => setEnabled(false)}
             >
               <Button className="text-accent bg-white">Sign In</Button>
-            </Link>
+            </a>
           )}
         </li>
       </ul>
