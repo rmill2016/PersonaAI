@@ -53,7 +53,6 @@ export default function RootLayout({ children }: PropsWithChildren) {
           <Footer />
         </SupabaseProvider>
       </body>
-      <script src="node_modules/flowbite/dist/flowbite.min.js"></script>
     </html>
   )
 }

@@ -17,3 +17,7 @@ html.lenis {
 .lenis.lenis-scrolling iframe {
   pointer-events: none;
 }
+
+.video {
+  @apply aspect-video w-full h-auto max-w-screen-md;
+}

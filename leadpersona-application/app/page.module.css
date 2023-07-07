@@ -3,7 +3,7 @@
 }
 
 .homepageContainer {
-  @apply md:pt-20 lg:grid lg:grid-cols-2 lg:grid-flow-row container relative z-10 flex flex-col w-full h-full max-w-screen-lg gap-10 pt-10;
+  @apply md:pt-20 lg:grid lg:grid-cols-2 lg:grid-flow-row place-items-center container relative z-10 flex flex-col w-full max-w-screen-lg gap-10 pt-10 min-h-[calc(100dvh-4rem)] h-auto;
 }
 
 .homepageContainer h1 {
@@ -26,7 +26,7 @@
 }
 
 .homeLeft ul {
-  @apply md:gap-8 md:mt-10 flex flex-col items-start w-full h-auto gap-4;
+  @apply md:gap-8 md:mt-10 lg:-mt-20 lg:gap-12 flex flex-col items-start w-full h-auto gap-4;
 }
 
 .homeLeft ul li {
@@ -38,11 +38,11 @@
 }
 
 .homeRight img {
-  @apply md:w-80 w-64 h-auto m-auto;
+  @apply md:w-80 lg:w-96 lg:-mb-4 w-64 h-auto m-auto;
 }
 
 .product {
-  @apply md:py-20 h-[calc(100dvh-4rem)] container flex flex-col justify-between py-10;
+  @apply md:py-20 container flex flex-col justify-between py-10 min-h-[calc(100dvh-4rem)] h-auto;
 }
 
 .product h2 {
@@ -58,11 +58,7 @@
 }
 
 .faqs {
-  @apply container relative h-auto py-20 overflow-hidden;
-}
-
-.faqsList {
-  @apply flex flex-col items-center w-full h-auto gap-10;
+  @apply min-h-[calc(100dvh-4rem)] h-auto container relative py-20 overflow-hidden grid place-items-center gap-10 grid-flow-row md:gap-20 lg:gap-24;
 }
 
 .blTriangle {
@@ -73,4 +69,8 @@
 .trTriangle {
   clip-path: polygon(0 0, 100% 0, 100% 100%);
   @apply bg-accent md:w-32 md:h-32 lg:w-40 lg:h-40 absolute top-0 right-0 w-20 h-20;
+}
+
+.contact {
+  @apply min-h-[calc(100dvh-4rem)] h-auto container py-20 grid grid-flow-row place-items-center;
 }

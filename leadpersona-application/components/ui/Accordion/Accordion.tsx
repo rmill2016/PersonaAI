@@ -1,28 +1,31 @@
 'use client'
 
 import React from 'react'
-import Button from '@/components/ui/Button'
 import { Accordion } from 'flowbite-react'
 
 type Props = {
-  question: string
-  answer: string
+  panel: {
+    title: string
+    content: string
+  }[]
 }
 
-const DropdownComponent = ({ question, answer }: Props) => {
+const DropdownComponent = ({ panel }: Props) => {
   return (
     <Accordion
       collapseAll
-      className="hover:ring hover:ring-accent-darken focus:ring focus:ring-accent-darken border-none"
+      className="md:gap-20 lg:gap-24 flex flex-col w-full h-auto max-w-screen-md gap-10 my-auto border-none divide-y-0 outline-none"
     >
-      <Accordion.Panel>
-        <Accordion.Title>
-          <h4>{question}</h4>
-        </Accordion.Title>
-        <Accordion.Content>
-          <p className="text-white">{answer}</p>
-        </Accordion.Content>
-      </Accordion.Panel>
+      {panel.map((accordion) => (
+        <Accordion.Panel collapseAll>
+          <Accordion.Title>
+            <h4>{accordion.title}</h4>
+          </Accordion.Title>
+          <Accordion.Content>
+            <p>{accordion.content}</p>
+          </Accordion.Content>
+        </Accordion.Panel>
+      ))}
     </Accordion>
   )
 }

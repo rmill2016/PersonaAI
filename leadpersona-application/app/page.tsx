@@ -7,23 +7,24 @@ import { FaBox, FaEdit, FaExternalLinkAlt } from 'react-icons/fa'
 import Laptop from '@/components/scroll/laptop'
 import Lenis from '@studio-freight/lenis'
 import Accordion from '@/components/ui/Accordion/Accordion'
+import ContactForm from '@/components/ui/ContactForm/ContactForm'
 
-const faqList: Array<{ question: string; answer: string }> = [
+const faqList: Array<{ title: string; content: string }> = [
   {
-    question: 'Why Choose LeadPersona Over Competitors?',
-    answer: 'because...'
+    title: 'Why Choose LeadPersona Over Competitors?',
+    content: 'because...'
   },
   {
-    question: 'Why Choose LeadPersona Over Competitors?',
-    answer: 'because...'
+    title: 'Why Choose LeadPersona Over Competitors?',
+    content: 'because...'
   },
   {
-    question: 'Why Choose LeadPersona Over Competitors?',
-    answer: 'because...'
+    title: 'Why Choose LeadPersona Over Competitors?',
+    content: 'because...'
   },
   {
-    question: 'Why Choose LeadPersona Over Competitors?',
-    answer: 'because...'
+    title: 'Why Choose LeadPersona Over Competitors?',
+    content: 'because...'
   }
 ]
 
@@ -92,17 +93,20 @@ const Page = () => {
       <section id="faqs" className={s.faqs}>
         <div className={s.blTriangle}></div>
         <div className={s.trTriangle}></div>
-        <ul className={s.faqsList}>
-          {faqList.map((faq, index) => (
-            <Accordion
-              key={index}
-              question={faq.question}
-              answer={faq.answer}
-            />
-          ))}
-        </ul>
+        <h2>Frequently Asked Questions</h2>
+        <Accordion panel={faqList} />
+        <Button
+          variant="filled"
+          className="bg-accent"
+          onClick={() => window.location.assign('/pricing')}
+        >
+          Learn More
+        </Button>
       </section>
-      <section id="contact"></section>
+      <section id="contact" className={s.contact}>
+        <h2 className="text-center">Get In Contact With Us</h2>
+        <ContactForm />
+      </section>
     </>
   )
 }

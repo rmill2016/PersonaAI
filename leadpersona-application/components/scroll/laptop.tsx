@@ -11,14 +11,14 @@ const Laptop = (props: Props) => {
   const { scene: laptop } = useGLTF('/laptop.glb')
 
   return (
-    <div className="place-items-center grid py-10">
-      <Canvas>
+    <div className="place-items-center grid w-full h-full">
+      {/* <Canvas>
         <ambientLight color="white" />
         <pointLight position={[0, 0, 4]} />
         <PerspectiveCamera makeDefault position={[0, -1, 10]} />
         <mesh
           position={[0, -1, 0]}
-          rotation={[Math.PI / 5, 0, 0]}
+          rotation={[Math.PI / 8, 0, 0]}
           receiveShadow
         >
           <primitive object={laptop} />
@@ -31,7 +31,16 @@ const Laptop = (props: Props) => {
           rotateSpeed={0.5} // Adjust the rotation speed
           target={[0, 0, 0]} // Set the target for the camera
         />
-      </Canvas>
+      </Canvas> */}
+      <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/reUZRyXxUs4"
+        title="LeadPersona AI Video"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowFullScreen
+        className="video"
+      ></iframe>
     </div>
   )
 }
