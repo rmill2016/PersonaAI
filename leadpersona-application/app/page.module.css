@@ -42,7 +42,7 @@
 }
 
 .product {
-  @apply md:py-20 container flex flex-col justify-between py-10 min-h-[calc(100dvh-4rem)] h-auto;
+  @apply md:py-20 container flex flex-col justify-between py-10 min-h-[calc(100dvh-4rem)] h-auto lg:gap-10;
 }
 
 .product h2 {

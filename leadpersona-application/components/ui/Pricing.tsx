@@ -8,6 +8,7 @@ import { Session, User } from '@supabase/supabase-js'
 import cn from 'classnames'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
+import PricingCard from './PricingCard/PricingCard'
 
 type Subscription = Database['public']['Tables']['subscriptions']['Row']
 type Product = Database['public']['Tables']['products']['Row']
@@ -80,7 +81,7 @@ export default function Pricing({
           <p className="mt-4 text-center text-white">
             We offer monthly and yearly plans for our services
           </p>
-          <div className="relative self-center mt-6 bg-zinc-900 rounded-lg p-0.5 flex sm:mt-8 ">
+          {/* <div className="relative self-center mt-6 bg-zinc-900 rounded-lg p-0.5 flex sm:mt-8 ">
             {intervals.includes('month') && (
               <button
                 onClick={() => setBillingInterval('month')}
@@ -107,58 +108,17 @@ export default function Pricing({
                 Yearly billing
               </button>
             )}
-          </div>
+          </div> */}
         </div>
         <div className="sm:mt-16 sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-6 lg:max-w-4xl lg:mx-auto xl:max-w-none xl:mx-0 xl:grid-cols-3 mt-12 space-y-4">
-          {products.map((product) => {
-            const price = product?.prices?.find(
-              (price) => price.interval === billingInterval
-            )
-            if (!price) return null
-            const priceString = new Intl.NumberFormat('en-US', {
-              style: 'currency',
-              currency: price.currency!,
-              minimumFractionDigits: 0
-            }).format((price?.unit_amount || 0) / 100)
-            return (
-              <div
-                key={product.id}
-                className={cn('rounded-lg shadow-sm bg-zinc-900', {
-                  'border border-secondary': subscription
-                    ? product.name === subscription?.prices?.products?.name
-                    : product.name === 'Freelancer'
-                })}
-              >
-                <div className="p-6">
-                  <h2 className="text-2xl font-semibold leading-6 text-white">
-                    {product.name}
-                  </h2>
-                  <p className="text-zinc-300 mt-4">{product.description}</p>
-                  <p className="mt-8">
-                    <span className="text-5xl font-extrabold text-white">
-                      {priceString}
-                    </span>
-                    <span className="text-zinc-100 text-base font-medium">
-                      /{billingInterval}
-                    </span>
-                  </p>
-                  <Button
-                    variant="filled"
-                    type="button"
-                    disabled={!session}
-                    loading={priceIdLoading === price.id}
-                    onClick={() => handleCheckout(price)}
-                    className="bg-accent mt-8 text-white"
-                  >
-                    {product.name === subscription?.prices?.products?.name
-                      ? 'Manage'
-                      : 'Subscribe'}
-                  </Button>
-                </div>
-              </div>
-            )
-          })}
+          {products &&
+            products.map((product) => <PricingCard title={product.name!} />)}
         </div>
+        {/* <div className="md:flex-row md:flex-wrap lg:flex-1 flex flex-col items-center w-full h-auto gap-6">
+            {intervals.map((interval) => (
+              <PricingCard key={interval} />
+            ))}
+          </div> */}
       </div>
     </section>
   )
