@@ -8,7 +8,7 @@ import { Session, User } from '@supabase/supabase-js'
 import cn from 'classnames'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
-import PricingCard from './PricingCard/PricingCard'
+import PricingCard from '../PricingCard/PricingCard'
 
 type Subscription = Database['public']['Tables']['subscriptions']['Row']
 type Product = Database['public']['Tables']['products']['Row']
@@ -31,6 +31,12 @@ interface Props {
 }
 
 type BillingInterval = 'year' | 'month'
+
+const formatter = new Intl.NumberFormat(undefined, {
+  style: 'currency',
+  currency: 'USD',
+  unitDisplay: 'narrow'
+})
 
 export default function Pricing({
   session,
@@ -110,15 +116,25 @@ export default function Pricing({
             )}
           </div> */}
         </div>
-        <div className="sm:mt-16 sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-6 lg:max-w-4xl lg:mx-auto xl:max-w-none xl:mx-0 xl:grid-cols-3 mt-12 space-y-4">
+        <ul className="flex flex-col items-center w-full h-auto gap-10 mt-20">
           {products &&
-            products.map((product) => <PricingCard title={product.name!} />)}
-        </div>
-        {/* <div className="md:flex-row md:flex-wrap lg:flex-1 flex flex-col items-center w-full h-auto gap-6">
-            {intervals.map((interval) => (
-              <PricingCard key={interval} />
-            ))}
-          </div> */}
+            products
+              // sort products by lowest price to highest
+              .sort(
+                (a, b) => a.prices[0].unit_amount! - b.prices[0].unit_amount!
+              )
+              .map((product, index) => (
+                <PricingCard
+                  key={index}
+                  title={product.description}
+                  apiCalls="X API Calls Per Month"
+                  price={product.prices.map((price) =>
+                    formatter.format(price.unit_amount as number)
+                  )}
+                  options={product.metadata}
+                />
+              ))}
+        </ul>
       </div>
     </section>
   )

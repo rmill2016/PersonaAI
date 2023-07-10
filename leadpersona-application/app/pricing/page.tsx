@@ -1,4 +1,4 @@
-import Pricing from '@/components/ui/Pricing'
+import Pricing from '@/components/ui/Pricing/Pricing'
 import {
   getSession,
   getSubscription,
