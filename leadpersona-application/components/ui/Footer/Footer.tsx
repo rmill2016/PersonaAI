@@ -1,92 +1,28 @@
-import Link from 'next/link'
+'use client'
 
-import Logo from '@/components/icons/Logo'
-import GitHub from '@/components/icons/GitHub'
+import { Footer } from 'flowbite-react'
 
-export default function Footer() {
+export default function FooterComponent() {
   return (
-    <footer className="mx-auto max-w-[1920px] px-6 bg-zinc-900">
-      <div className="lg:grid-cols-12 border-zinc-600 bg-zinc-900 grid grid-cols-1 gap-8 py-12 text-white transition-colors duration-150 border-b">
-        <div className="lg:col-span-2 col-span-1">
-          <Link
-            href="/"
-            className="md:mr-24 flex items-center flex-initial font-bold"
-          >
-            <span className="border-zinc-700 mr-2 border rounded-full">
-              <Logo />
-            </span>
-            <span>ACME</span>
-          </Link>
+    <Footer container bgDark>
+      <div className="w-full text-center">
+        <div className="flex items-center justify-between w-full">
+          <Footer.Brand alt="Flowbite Logo" href="/" src="/favicon.ico" />
+          <Footer.LinkGroup>
+            <Footer.Link href="/privacy-policy">Privacy Policy</Footer.Link>
+            <Footer.Link href="/terms-and-conditions">
+              Terms & Conditions
+            </Footer.Link>
+            <Footer.Link href="/cookie-policy">Cookie Policy</Footer.Link>
+            <Footer.Link href="/contact-us">Contact Us</Footer.Link>
+          </Footer.LinkGroup>
         </div>
-        <div className="lg:col-span-2 col-span-1">
-          <ul className="md:flex-1 flex flex-col flex-initial">
-            <li className="md:py-0 md:pb-4 py-3">
-              <Link
-                href="/"
-                className="hover:text-zinc-200 text-white transition duration-150 ease-in-out"
-              >
-                Home
-              </Link>
-            </li>
-            <li className="md:py-0 md:pb-4 py-3">
-              <Link
-                href="/"
-                className="hover:text-zinc-200 text-white transition duration-150 ease-in-out"
-              >
-                About
-              </Link>
-            </li>
-            <li className="md:py-0 md:pb-4 py-3">
-              <Link
-                href="/"
-                className="hover:text-zinc-200 text-white transition duration-150 ease-in-out"
-              >
-                Careers
-              </Link>
-            </li>
-            <li className="md:py-0 md:pb-4 py-3">
-              <Link
-                href="/"
-                className="hover:text-zinc-200 text-white transition duration-150 ease-in-out"
-              >
-                Blog
-              </Link>
-            </li>
-          </ul>
-        </div>
-        <div className="lg:col-span-2 col-span-1">
-          <ul className="md:flex-1 flex flex-col flex-initial">
-            <li className="md:py-0 md:pb-4 py-3">
-              <p className="hover:text-zinc-200 font-bold text-white transition duration-150 ease-in-out">
-                LEGAL
-              </p>
-            </li>
-            <li className="md:py-0 md:pb-4 py-3">
-              <Link
-                href="/"
-                className="hover:text-zinc-200 text-white transition duration-150 ease-in-out"
-              >
-                Privacy Policy
-              </Link>
-            </li>
-            <li className="md:py-0 md:pb-4 py-3">
-              <Link
-                href="/"
-                className="hover:text-zinc-200 text-white transition duration-150 ease-in-out"
-              >
-                Terms of Use
-              </Link>
-            </li>
-          </ul>
-        </div>
+        <Footer.Copyright
+          by="LeadPersona | Your AI Leader"
+          href="#"
+          year={2023}
+        />
       </div>
-      <div className="md:flex-row bg-zinc-900 flex flex-col items-center justify-between py-12 space-y-4">
-        <div>
-          <span>
-            &copy; {new Date().getFullYear()} ACME, Inc. All rights reserved.
-          </span>
-        </div>
-      </div>
-    </footer>
+    </Footer>
   )
 }

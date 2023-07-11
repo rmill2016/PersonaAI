@@ -1,11 +1,11 @@
 import React from 'react'
-import Link from 'next/link'
 import { headers } from 'next/headers'
 import { createServerSupabaseClient } from '@/app/supabase-server'
 
 import Logo from '@/components/icons/Logo'
 import Button from '@/components/ui/Button'
 import Dropdown from '@/components/ui/Menu'
+import Link from 'next/link'
 
 import s from './Navbar.module.css'
 
@@ -45,7 +45,7 @@ export default async function Navbar() {
               </Link>
             </li>
             <li>
-              <Link href={'#faq'} className={s.link}>
+              <Link href={'#faqs'} className={s.link}>
                 FAQs
               </Link>
             </li>

@@ -6,12 +6,12 @@ html,
 body {
   text-rendering: optimizeLegibility;
   -moz-osx-font-smoothing: grayscale;
-  @apply bg-base font-inter scroll-smooth overflow-x-hidden antialiased text-white;
+  overscroll-behavior: none;
+  @apply bg-base font-inter overflow-x-hidden antialiased text-white;
 }
 
 body {
   min-height: 100%;
-  margin: 0;
 }
 
 @layer base {

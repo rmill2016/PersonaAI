@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import Button from '@/components/ui/Button/Button'
 import { Json } from '@/types_db'
@@ -18,8 +20,8 @@ const PricingCard = ({ title, apiCalls, price, options, button }: Props) => {
         <h3 className="text-center">{title}</h3>
         <p className="text-center">{apiCalls}</p>
       </div>
-      <div className="flex flex-col justify-between flex-grow h-full p-4 bg-white rounded-b-lg">
-        <h2 className="md:text-5xl lg:text-6xl flex-grow text-4xl font-bold text-center text-black">
+      <div className="flex flex-col flex-grow h-full gap-10 p-6 bg-white rounded-b-lg">
+        <h2 className="md:text-5xl lg:text-6xl text-4xl font-bold text-center text-black">
           {price}
         </h2>
         <div className="bg-gray w-full h-px"></div>
@@ -40,6 +42,7 @@ const PricingCard = ({ title, apiCalls, price, options, button }: Props) => {
         </ul>
         <Button
           variant="filled"
+          onClick={() => window.location.assign('/signin')}
           className="bg-accent self-end w-auto text-white"
         >
           {options &&
