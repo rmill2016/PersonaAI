@@ -116,7 +116,7 @@ export default function Pricing({
             )}
           </div> */}
         </div>
-        <ul className="flex flex-col items-center w-full h-auto gap-10 mt-20">
+        <ul className="md:flex-row md:flex-wrap md:justify-center flex flex-col items-center w-full h-auto gap-10 mt-20">
           {products &&
             products
               // sort products by lowest price to highest

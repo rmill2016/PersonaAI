@@ -97,7 +97,7 @@ const Page = () => {
       <section id="faqs" className={s.faqs}>
         <div className={s.blTriangle}></div>
         <div className={s.trTriangle}></div>
-        <h2>Frequently Asked Questions</h2>
+        <h2 className="text-center">Frequently Asked Questions</h2>
         <Accordion panel={faqList} />
         <Button
           variant="filled"
